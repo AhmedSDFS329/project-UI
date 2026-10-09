@@ -20,6 +20,11 @@ The project aims to provide a simple, responsive, and user-friendly interface th
 ### Dashboard
 
 A central page that provides an overview of workout activities and quick access to the application's main features.
+The dashboard will include summary cards showing total workouts completed, current workout streak, and estimated calories burned.
+
+It will also include two data visualizations:
+* **Bar Chart:** Displays weekly workout duration or estimated calories burned per day.
+* **Pie/Doughnut Chart:** Shows the distribution of exercises by muscle group, such as Chest, Back, Legs, and Cardio.
 
 ### Exercise Library and Search
 
