@@ -78,6 +78,12 @@ project-UI/
 
 The setup and run instructions will be updated as the implementation develops. They will explain how to install the required dependencies and run the application locally.
 
+## Important Links
+
+- System Main features & Scope 
+https://docs.google.com/document/d/1D9_xD_IetlL9-SCWiEtz6Ab_pgIxn-BV/edit?usp=sharing&ouid=117178522306722897626&rtpof=true&sd=true
+
+
 ## Documentation
 
 Project documentation and design resources will be added to the docs directory. Relevant documentation links will be added as they become available.
