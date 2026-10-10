@@ -45,7 +45,7 @@ A user interface designed to work across desktop and mobile screen sizes.
 ## Team Members
 
 - Ahmed Osama — Team Leader
-- Lili
+- Laila
 - Ziad
 - Nour
 
@@ -82,6 +82,9 @@ The setup and run instructions will be updated as the implementation develops. T
 
 - Project's Main Features & Scope Document 
 https://docs.google.com/document/d/1D9_xD_IetlL9-SCWiEtz6Ab_pgIxn-BV/edit?usp=sharing&ouid=117178522306722897626&rtpof=true&sd=true
+
+- Technical Requirements & Repository Structure
+https://drive.google.com/file/d/1iNadRO36lmzmewQSF6Q-OGQHg58-3xvw/view?usp=sharing
 
 
 ## Documentation
