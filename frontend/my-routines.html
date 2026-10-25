@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Routines - Fitness & Workout Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-container">
+      <div class="flex items-center space-x-3">
+        <a href="dashboard.html" class="brand-logo"><div class="logo-icon">Z</div><span>Fitness<span class="brand-highlight">Planner</span></span></a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="badge-prototype">Phase 2 Prototype</span>
+        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-semibold text-xs border border-[var(--color-teal)]">Z</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <aside class="app-sidebar">
+      <nav class="sidebar-card">
+        <div class="sidebar-title">Navigation</div>
+        <a href="dashboard.html" class="nav-link"><span>Dashboard</span></a>
+        <a href="exercise-library.html" class="nav-link"><span>Exercise Library</span></a>
+        <a href="routine-builder.html" class="nav-link"><span>Routine Builder</span></a>
+        <a href="my-routines.html" class="nav-link active"><span>My Routines</span></a>
+        <a href="workout-history.html" class="nav-link"><span>Workout History</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
+        <div>
+          <h1 class="page-title">My Routines</h1>
+          <p class="page-subtitle">Manage and start your custom workout routines.</p>
+        </div>
+        <a href="routine-builder.html" class="btn-teal text-xs">+ Create Routine</a>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card space-y-4 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-lg">Upper Body Power</h3>
+            <p class="text-xs mt-1 text-slate-400">Focus on chest, back, and arms strength.</p>
+          </div>
+          <div class="flex gap-4 text-xs py-2 border-y border-[var(--border-color)] text-slate-400">
+            <span>⏱ 45 Min</span>
+            <span>💪 6 Exercises</span>
+          </div>
+          <div class="space-y-2 pt-1">
+            <a href="active-workout.html" class="btn-success text-xs text-center block w-full py-2">Start Workout</a>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="btn-secondary text-xs">Edit</button>
+              <button class="btn-secondary text-xs text-red-400">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card space-y-4 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-lg">Leg Day Crusher</h3>
+            <p class="text-xs mt-1 text-slate-400">Heavy squats, lunges, and calf raises.</p>
+          </div>
+          <div class="flex gap-4 text-xs py-2 border-y border-[var(--border-color)] text-slate-400">
+            <span>⏱ 60 Min</span>
+            <span>💪 5 Exercises</span>
+          </div>
+          <div class="space-y-2 pt-1">
+            <a href="active-workout.html" class="btn-success text-xs text-center block w-full py-2">Start Workout</a>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="btn-secondary text-xs">Edit</button>
+              <button class="btn-secondary text-xs text-red-400">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card space-y-4 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-lg">Quick Core & Cardio</h3>
+            <p class="text-xs mt-1 text-slate-400">High intensity intervals and core stability.</p>
+          </div>
+          <div class="flex gap-4 text-xs py-2 border-y border-[var(--border-color)] text-slate-400">
+            <span>⏱ 30 Min</span>
+            <span>💪 8 Exercises</span>
+          </div>
+          <div class="space-y-2 pt-1">
+            <a href="active-workout.html" class="btn-success text-xs text-center block w-full py-2">Start Workout</a>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="btn-secondary text-xs">Edit</button>
+              <button class="btn-secondary text-xs text-red-400">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

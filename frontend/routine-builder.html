@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routine Builder - Fitness & Workout Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-container">
+      <div class="flex items-center space-x-3">
+        <a href="dashboard.html" class="brand-logo"><div class="logo-icon">Z</div><span>Fitness<span class="brand-highlight">Planner</span></span></a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="badge-prototype">Phase 2 Prototype</span>
+        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-semibold text-xs border border-[var(--color-teal)]">Z</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <aside class="app-sidebar">
+      <nav class="sidebar-card">
+        <div class="sidebar-title">Navigation</div>
+        <a href="dashboard.html" class="nav-link"><span>Dashboard</span></a>
+        <a href="exercise-library.html" class="nav-link"><span>Exercise Library</span></a>
+        <a href="routine-builder.html" class="nav-link active"><span>Routine Builder</span></a>
+        <a href="my-routines.html" class="nav-link"><span>My Routines</span></a>
+        <a href="workout-history.html" class="nav-link"><span>Workout History</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="mb-2">
+        <h1 class="page-title">Routine Builder</h1>
+        <p class="page-subtitle">Create a new custom workout routine.</p>
+      </div>
+
+      <form action="my-routines.html" class="card space-y-6" style="max-width: 48rem;">
+        <div class="form-group">
+          <label for="routine-name" class="form-label">Routine Name <span class="text-red-400">*</span></label>
+          <input type="text" id="routine-name" required placeholder="e.g., Pull Day" class="select-control">
+        </div>
+
+        <div class="space-y-4 pt-2">
+          <div class="flex items-center justify-between pb-2 border-b border-[var(--border-color)]">
+            <h3 class="font-bold text-sm">Selected Exercises</h3>
+            <a href="exercise-library.html" class="text-xs font-bold text-[var(--color-teal)]">+ Add Exercise</a>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="flex items-center gap-3 flex-1">
+                <span class="text-slate-400">☰</span>
+                <div>
+                  <h4 class="font-bold text-sm">Barbell Bench Press</h4>
+                  <span class="badge-tag mt-1 inline-block">Chest, Triceps</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="form-group">
+                  <label class="form-label text-[10px]">Sets</label>
+                  <input type="number" value="3" min="1" class="select-control py-1 text-center" style="width: 4rem;">
+                </div>
+                <div class="form-group">
+                  <label class="form-label text-[10px]">Reps</label>
+                  <input type="number" value="10" min="1" class="select-control py-1 text-center" style="width: 4rem;">
+                </div>
+                <button type="button" class="ml-2 text-slate-400 hover:text-red-400">✕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 pt-4 border-t border-[var(--border-color)]">
+          <button type="submit" class="btn-teal text-xs px-6">Save Routine</button>
+          <a href="my-routines.html" class="btn-secondary text-xs px-6">Cancel</a>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
