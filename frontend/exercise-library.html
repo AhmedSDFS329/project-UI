@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise Library - Fitness & Workout Planner</title>
+
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-brandBg text-brandText font-sans min-h-screen flex flex-col antialiased">
+
+  
+  <header class="app-header">
+    <div class="header-container">
+      <div class="flex items-center space-x-3">
+        <button id="mobile-menu-btn" class="md:hidden text-brandMuted hover:text-brandText focus:outline-none p-2" aria-label="Open Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon">Z</div>
+          <span class="hidden sm:inline">Fitness<span class="brand-highlight">Planner</span></span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="badge-prototype">Phase 2 Prototype</span>
+        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-semibold text-xs border border-brandTeal">N</div>
+      </div>
+    </div>
+  </header>
+
+  
+  <div class="layout-container">
+    
+    
+    <aside class="app-sidebar">
+      <nav class="sidebar-card">
+        <div class="sidebar-title">Navigation</div>
+        <a href="index.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="exercise-library.html" class="nav-link active">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          <span>Exercise Library</span>
+        </a>
+        <a href="exercise-details.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Exercise Details</span>
+        </a>
+        <a href="routine-builder.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          <span>Routine Builder</span>
+        </a>
+        <a href="my-routines.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <span>My Routines</span>
+        </a>
+        <a href="active-workout.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span>Active Workout</span>
+        </a>
+        <a href="workout-history.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Workout History</span>
+        </a>
+      </nav>
+    </aside>
+
+    
+    <div id="mobile-drawer" class="fixed inset-0 bg-slate-950/80 z-40 hidden md:hidden flex justify-start">
+      <div class="bg-brandCard w-64 h-full p-4 border-r border-slate-800 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <span class="font-bold text-lg">Menu</span>
+            <button id="close-drawer-btn" class="text-brandMuted hover:text-brandText">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <nav class="space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-brandMuted hover:bg-slate-800">Dashboard</a>
+            <a href="exercise-library.html" class="block px-3 py-2 rounded-lg bg-brandTeal/10 text-brandTeal font-semibold">Exercise Library</a>
+            <a href="exercise-details.html" class="block px-3 py-2 rounded-lg text-brandMuted hover:bg-slate-800">Exercise Details</a>
+            <a href="routine-builder.html" class="block px-3 py-2 rounded-lg text-brandMuted hover:bg-slate-800">Routine Builder</a>
+            <a href="my-routines.html" class="block px-3 py-2 rounded-lg text-brandMuted hover:bg-slate-800">My Routines</a>
+            <a href="active-workout.html" class="block px-3 py-2 rounded-lg text-brandMuted hover:bg-slate-800">Active Workout</a>
+            <a href="workout-history.html" class="block px-3 py-2 rounded-lg text-brandMuted hover:bg-slate-800">Workout History</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    
+    <main class="main-content">
+      
+      
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h1 class="page-title">Exercise Library</h1>
+          <p class="page-subtitle">Explore, search, and filter exercises to build your ideal workout routine.</p>
+        </div>
+        <div class="text-xs text-brandMuted bg-brandCard px-3 py-1.5 rounded-lg border border-slate-800 inline-flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brandTeal"></span>
+          Showing <span id="exercise-count" class="font-bold text-brandText">8</span> exercises
+        </div>
+      </div>
+
+      
+      <div class="card space-y-4">
+        <div class="search-box">
+          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="search-input" placeholder="Search exercises by name or muscle..." class="search-input">
+        </div>
+
+        <div class="filter-grid">
+          <div class="form-group">
+            <label for="muscle-filter" class="form-label">Muscle Group</label>
+            <select id="muscle-filter" class="select-control">
+              <option value="all">All Muscles</option>
+              <option value="chest">Chest</option>
+              <option value="back">Back</option>
+              <option value="legs">Legs</option>
+              <option value="cardio">Cardio</option>
+              <option value="shoulders">Shoulders</option>
+              <option value="arms">Arms</option>
+              <option value="core">Core</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="equipment-filter" class="form-label">Equipment</label>
+            <select id="equipment-filter" class="select-control">
+              <option value="all">All Equipment</option>
+              <option value="barbell">Barbell</option>
+              <option value="dumbbell">Dumbbell</option>
+              <option value="bodyweight">Bodyweight</option>
+              <option value="machine">Machine</option>
+              <option value="treadmill">Treadmill</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="difficulty-filter" class="form-label">Difficulty Level</label>
+            <select id="difficulty-filter" class="select-control">
+              <option value="all">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      
+      <div id="exercise-grid" class="cards-grid">
+        
+        <div class="exercise-card" data-name="barbell bench press" data-muscle="chest" data-equipment="barbell" data-difficulty="intermediate">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span class="difficulty-badge intermediate">Intermediate</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Barbell Bench Press</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Chest</span>
+                <span class="badge-tag">Barbell</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Barbell Bench Press')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="dumbbell squat" data-muscle="legs" data-equipment="dumbbell" data-difficulty="beginner">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              <span class="difficulty-badge beginner">Beginner</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Dumbbell Squat</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Legs</span>
+                <span class="badge-tag">Dumbbell</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Dumbbell Squat')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="pull ups" data-muscle="back" data-equipment="bodyweight" data-difficulty="intermediate">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+              <span class="difficulty-badge intermediate">Intermediate</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Pull-Ups</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Back</span>
+                <span class="badge-tag">Bodyweight</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Pull-Ups')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="push ups" data-muscle="chest" data-equipment="bodyweight" data-difficulty="beginner">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="difficulty-badge beginner">Beginner</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Push-Ups</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Chest</span>
+                <span class="badge-tag">Bodyweight</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Push-Ups')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="overhead dumbbell press" data-muscle="shoulders" data-equipment="dumbbell" data-difficulty="intermediate">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 11l7-7 7 7M5 19l7-7 7 7"/></svg>
+              <span class="difficulty-badge intermediate">Intermediate</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Overhead Dumbbell Press</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Shoulders</span>
+                <span class="badge-tag">Dumbbell</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Overhead Dumbbell Press')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="treadmill running" data-muscle="cardio" data-equipment="treadmill" data-difficulty="beginner">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span class="difficulty-badge beginner">Beginner</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Treadmill Interval Run</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Cardio</span>
+                <span class="badge-tag">Treadmill</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Treadmill Run')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="plank hold" data-muscle="core" data-equipment="bodyweight" data-difficulty="beginner">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="difficulty-badge beginner">Beginner</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Core Plank Hold</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Core</span>
+                <span class="badge-tag">Bodyweight</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Core Plank Hold')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+        <div class="exercise-card" data-name="bicep curls" data-muscle="arms" data-equipment="dumbbell" data-difficulty="intermediate">
+          <div>
+            <div class="card-image-box">
+              <svg class="w-16 h-16 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              <span class="difficulty-badge intermediate">Intermediate</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-base text-brandText">Dumbbell Bicep Curls</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge-tag">Arms</span>
+                <span class="badge-tag">Dumbbell</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 grid grid-cols-2 gap-2 mt-2">
+            <a href="exercise-details.html" class="btn-secondary text-center text-xs">Details</a>
+            <button onclick="quickAdd('Dumbbell Bicep Curls')" class="btn-teal text-xs">Quick Add</button>
+          </div>
+        </div>
+
+      </div>
+
+      
+      <div id="empty-state" class="hidden card text-center space-y-3 py-8">
+        <h3 class="text-lg font-bold text-brandText">No exercises match your search</h3>
+        <p class="text-xs text-brandMuted max-w-sm mx-auto">Try adjusting your keywords, resetting filters, or choosing a different muscle group.</p>
+        <button id="reset-filters-btn" class="btn-teal text-xs">Reset All Filters</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+
+    mobileMenuBtn.addEventListener('click', () => mobileDrawer.classList.remove('hidden'));
+    closeDrawerBtn.addEventListener('click', () => mobileDrawer.classList.add('hidden'));
+
+    
+    const searchInput = document.getElementById('search-input');
+    const muscleFilter = document.getElementById('muscle-filter');
+    const equipmentFilter = document.getElementById('equipment-filter');
+    const difficultyFilter = document.getElementById('difficulty-filter');
+    const cards = document.querySelectorAll('.exercise-card');
+    const emptyState = document.getElementById('empty-state');
+    const countDisplay = document.getElementById('exercise-count');
+    const resetBtn = document.getElementById('reset-filters-btn');
+
+    function filterExercises() {
+      const q = searchInput.value.toLowerCase().trim();
+      const muscle = muscleFilter.value;
+      const equip = equipmentFilter.value;
+      const diff = difficultyFilter.value;
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cName = card.getAttribute('data-name');
+        const cMuscle = card.getAttribute('data-muscle');
+        const cEquip = card.getAttribute('data-equipment');
+        const cDiff = card.getAttribute('data-difficulty');
+
+        const matchesSearch = cName.includes(q) || cMuscle.includes(q);
+        const matchesMuscle = muscle === 'all' || cMuscle === muscle;
+        const matchesEquip = equip === 'all' || cEquip === equip;
+        const matchesDiff = diff === 'all' || cDiff === diff;
+
+        if (matchesSearch && matchesMuscle && matchesEquip && matchesDiff) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      countDisplay.textContent = visibleCount;
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', filterExercises);
+    muscleFilter.addEventListener('change', filterExercises);
+    equipmentFilter.addEventListener('change', filterExercises);
+    difficultyFilter.addEventListener('change', filterExercises);
+
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      muscleFilter.value = 'all';
+      equipmentFilter.value = 'all';
+      difficultyFilter.value = 'all';
+      filterExercises();
+    });
+
+    function quickAdd(name) {
+      alert(`Added "${name}" to quick routine!`);
+    }
+  </script>
+</body>
+</html>

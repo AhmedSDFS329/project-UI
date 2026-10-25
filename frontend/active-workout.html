@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Workout - Fitness & Workout Planner</title>
+
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-brandBg text-brandText font-sans min-h-screen flex flex-col antialiased">
+
+  
+  <header class="app-header">
+    <div class="header-container">
+      <div class="flex items-center space-x-3">
+        <button id="mobile-menu-btn" class="md:hidden text-brandMuted hover:text-brandText focus:outline-none p-2" aria-label="Open Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon">Z</div>
+          <span class="hidden sm:inline">Fitness<span class="brand-highlight">Planner</span></span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-3">
+        <span class="badge-prototype" style="border-color: rgba(34, 197, 94, 0.4); color: var(--color-success);">● Workout Live</span>
+      </div>
+    </div>
+  </header>
+
+  
+  <div class="layout-container">
+    
+    
+    <aside class="app-sidebar">
+      <nav class="sidebar-card">
+        <div class="sidebar-title">Navigation</div>
+        <a href="index.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="exercise-library.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          <span>Exercise Library</span>
+        </a>
+        <a href="exercise-details.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Exercise Details</span>
+        </a>
+        <a href="routine-builder.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          <span>Routine Builder</span>
+        </a>
+        <a href="my-routines.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <span>My Routines</span>
+        </a>
+        <a href="active-workout.html" class="nav-link active">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span>Active Workout</span>
+        </a>
+        <a href="workout-history.html" class="nav-link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Workout History</span>
+        </a>
+      </nav>
+    </aside>
+
+    
+    <main class="main-content">
+
+      
+      <div class="card space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <span class="text-xs text-brandTeal font-bold uppercase tracking-wider">Full Body Power Routine</span>
+            <h1 id="exercise-title" class="text-2xl font-bold text-brandText">Barbell Bench Press</h1>
+          </div>
+          <div class="text-xs text-brandMuted flex items-center gap-3">
+            <span>Exercise <strong id="current-ex-num" class="text-brandText">2</strong> of <strong class="text-brandText">5</strong></span>
+            <span>Elapsed: <strong id="elapsed-time" class="text-brandTeal font-mono">14:20</strong></span>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="flex justify-between text-xs text-brandMuted">
+            <span>Routine Progress</span>
+            <span id="progress-percent" class="font-bold text-brandText">40%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="progress-bar" class="progress-bar-fill" style="width: 40%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-grid">
+
+        
+        <div class="workout-main-col space-y-5">
+          <div class="card space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="font-bold text-lg text-brandText">Sets & Repetitions</h2>
+              <span class="badge-tag">Target: 4 Sets x 10 Reps</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="table-custom">
+                <thead>
+                  <tr>
+                    <th>Set</th>
+                    <th>Target Reps</th>
+                    <th>Weight (kg)</th>
+                    <th class="text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="sets-list">
+                  <tr>
+                    <td class="font-bold">1</td>
+                    <td class="text-brandMuted">10 reps</td>
+                    <td><input type="number" value="60" class="select-control" style="width: 4.5rem; text-align: center;"></td>
+                    <td class="text-center"><button onclick="toggleSet(this)" class="btn-secondary text-xs">Mark Complete</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-bold">2</td>
+                    <td class="text-brandMuted">10 reps</td>
+                    <td><input type="number" value="60" class="select-control" style="width: 4.5rem; text-align: center;"></td>
+                    <td class="text-center"><button onclick="toggleSet(this)" class="btn-secondary text-xs">Mark Complete</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-bold">3</td>
+                    <td class="text-brandMuted">10 reps</td>
+                    <td><input type="number" value="60" class="select-control" style="width: 4.5rem; text-align: center;"></td>
+                    <td class="text-center"><button onclick="toggleSet(this)" class="btn-secondary text-xs">Mark Complete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2">
+            <button onclick="prevExercise()" class="btn-secondary text-xs">← Previous Exercise</button>
+            <button onclick="nextExercise()" class="btn-secondary text-xs">Next Exercise →</button>
+          </div>
+        </div>
+
+        
+        <div class="space-y-5">
+          <div class="card space-y-4 text-center">
+            <div class="flex items-center justify-between text-xs text-brandMuted border-b border-slate-800 pb-2">
+              <span class="font-bold text-brandText">Rest Timer</span>
+              <span class="badge-tag">Target: 60s</span>
+            </div>
+
+            <div>
+              <div id="timer-display" class="timer-display">01:00</div>
+              <p class="text-[11px] text-brandMuted mt-1">Take a breath before your next set</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="startTimer()" class="btn-teal text-xs">Start</button>
+              <button onclick="pauseTimer()" class="btn-secondary text-xs">Pause</button>
+              <button onclick="resetTimer()" class="btn-secondary text-xs">Reset</button>
+            </div>
+          </div>
+
+          <div class="card space-y-3">
+            <h3 class="font-bold text-sm text-brandText">Ready to wrap up?</h3>
+            <p class="text-xs text-brandMuted">Clicking finish will log your workout stats into your history.</p>
+            <button onclick="finishWorkout()" class="btn-success">Finish Workout</button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  
+  <div id="summary-modal" class="modal-overlay hidden">
+    <div class="modal-content space-y-4">
+      <h2 class="text-2xl font-bold text-brandText">Workout Completed!</h2>
+      <p class="text-xs text-brandMuted">Great job! 28 mins • 18 Sets • 245 kcal</p>
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <a href="workout-history.html" class="btn-teal text-xs">View History</a>
+        <a href="index.html" class="btn-secondary text-xs">Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSet(btn) {
+      if (btn.classList.contains('btn-teal')) {
+        btn.classList.remove('btn-teal');
+        btn.classList.add('btn-secondary');
+        btn.textContent = 'Mark Complete';
+      } else {
+        btn.classList.remove('btn-secondary');
+        btn.classList.add('btn-teal');
+        btn.textContent = '✓ Done';
+        startTimer();
+      }
+    }
+
+    let currentIndex = 1;
+    const exercisesList = ["Barbell Squat", "Barbell Bench Press", "Pull-Ups", "Overhead Press"];
+
+    function nextExercise() {
+      if (currentIndex < exercisesList.length - 1) {
+        currentIndex++;
+        document.getElementById('exercise-title').textContent = exercisesList[currentIndex];
+        document.getElementById('current-ex-num').textContent = currentIndex + 1;
+      }
+    }
+
+    function prevExercise() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        document.getElementById('exercise-title').textContent = exercisesList[currentIndex];
+        document.getElementById('current-ex-num').textContent = currentIndex + 1;
+      }
+    }
+
+    let timerInterval;
+    let secondsLeft = 60;
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (secondsLeft > 0) {
+          secondsLeft--;
+          const mins = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+          const secs = String(secondsLeft % 60).padStart(2, '0');
+          document.getElementById('timer-display').textContent = `${mins}:${secs}`;
+        } else {
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() { clearInterval(timerInterval); }
+    function resetTimer() { clearInterval(timerInterval); secondsLeft = 60; document.getElementById('timer-display').textContent = "01:00"; }
+    function finishWorkout() { document.getElementById('summary-modal').classList.remove('hidden'); }
+  </script>
+</body>
+</html>
