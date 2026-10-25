@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Details | FitTrack</title>
+</head>
+<body>
+    <header>
+        <a href="index.html">FitTrack</a>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="exercise-library.html">Exercise Library</a></li>
+                <li><a href="exercise-details.html" aria-current="page">Exercise Details</a></li>
+                <li><a href="routine-builder.html">Routine Builder</a></li>
+                <li><a href="my-routines.html">My Routines</a></li>
+                <li><a href="active-workout.html">Active Workout</a></li>
+                <li><a href="workout-history.html">Workout History</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <header>
+            <p>EXERCISE LIBRARY</p>
+            <h1>Exercise Details</h1>
+            <p>Learn the correct technique before starting your workout.</p>
+            <a href="exercise-library.html">Back to Exercise Library</a>
+        </header>
+
+        <section aria-labelledby="exercise-name">
+            <figure>
+                <img
+                    src="assets/images/exercises/push-up.jpg"
+                    alt="Person performing a push-up exercise"
+                    width="400"
+                >
+                <figcaption>Push-Up Exercise</figcaption>
+            </figure>
+
+            <h2 id="exercise-name">Push-Up</h2>
+            <p>
+                The push-up is a bodyweight exercise that strengthens the
+                chest, shoulders, triceps, and core.
+            </p>
+
+            <h3>Exercise Information</h3>
+            <ul>
+                <li>Target muscles: Chest, shoulders, and triceps</li>
+                <li>Equipment: None</li>
+                <li>Difficulty: Beginner</li>
+                <li>Suggested sets: 3</li>
+                <li>Suggested repetitions: 10</li>
+            </ul>
+
+            <a href="routine-builder.html">Add to Routine</a>
+        </section>
+
+        <section aria-labelledby="instructions-heading">
+            <h2 id="instructions-heading">How to Perform</h2>
+            <ol>
+                <li>
+                    <strong>Start position:</strong>
+                    Place your hands slightly wider than shoulder-width apart.
+                    Keep your body straight from head to heels.
+                </li>
+                <li>
+                    <strong>Lower your body:</strong>
+                    Bend your elbows and lower your chest toward the floor
+                    while keeping your core engaged.
+                </li>
+                <li>
+                    <strong>Push up:</strong>
+                    Press through your hands to return to the starting position.
+                </li>
+            </ol>
+        </section>
+
+        <section aria-labelledby="safety-heading">
+            <h2 id="safety-heading">Safety Tips</h2>
+            <ul>
+                <li>Keep your back and hips aligned.</li>
+                <li>Move slowly and maintain control.</li>
+                <li>Breathe steadily throughout the exercise.</li>
+                <li>Start with an easier variation if necessary.</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="mistakes-heading">
+            <h2 id="mistakes-heading">Common Mistakes</h2>
+            <ul>
+                <li>Allowing the hips to sag.</li>
+                <li>Moving too quickly.</li>
+                <li>Flaring the elbows excessively.</li>
+                <li>Failing to use the full comfortable range of motion.</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="sets-heading">
+            <h2 id="sets-heading">Sets and Repetitions</h2>
+
+            <form action="routine-builder.html" method="get">
+                <label for="sets">Number of Sets</label>
+                <select id="sets" name="sets">
+                    <option value="2">2 sets</option>
+                    <option value="3" selected>3 sets</option>
+                    <option value="4">4 sets</option>
+                    <option value="5">5 sets</option>
+                </select>
+
+                <label for="reps">Repetitions per Set</label>
+                <select id="reps" name="reps">
+                    <option value="8">8 reps</option>
+                    <option value="10" selected>10 reps</option>
+                    <option value="12">12 reps</option>
+                    <option value="15">15 reps</option>
+                </select>
+
+                <input type="hidden" name="exercise" value="Push-Up">
+                <button type="submit">Add to Routine</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>FitTrack - Fitness &amp; Workout Planner</p>
+        <p>Exercise information is provided for demonstration purposes.</p>
+    </footer>
+</body>
+</html>
