@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FitTrack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <a href="index.html" class="brand"><span class="brand-icon">F</span> FitTrack</a>
+            <nav class="navigation" aria-label="Main navigation">
+                <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                <a class="nav-link" href="exercise-library.html">Exercise Library</a>
+                <a class="nav-link" href="exercise-details.html">Exercise Details</a>
+                <a class="nav-link" href="routine-builder.html">Routine Builder</a>
+                <a class="nav-link" href="my-routines.html">My Routines</a>
+                <a class="nav-link" href="active-workout.html">Active Workout</a>
+                <a class="nav-link" href="workout-history.html">Workout History</a>
+            </nav>
+            <div class="sidebar-bottom">Stay consistent.<br><span class="muted">Every workout counts.</span></div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">FITNESS OVERVIEW</p>
+                    <h1>Dashboard</h1>
+                    <p class="muted">Track your activity and keep moving forward.</p>
+                </div>
+                <a href="active-workout.html" class="button button-primary">Start Workout</a>
+            </header>
+
+            <section class="welcome-panel">
+                <div>
+                    <p class="eyebrow">YOUR FITNESS JOURNEY</p>
+                    <h2>Welcome back!</h2>
+                    <p>Small steps every day lead to big results.</p>
+                </div>
+                <span class="welcome-symbol" aria-hidden="true">✦</span>
+            </section>
+
+            <section class="stats-grid" aria-label="Workout summary">
+                <article class="stat-card">
+                    <p class="muted">Workouts Completed</p>
+                    <p class="stat-value">24</p>
+                    <p class="stat-note">Total completed workouts</p>
+                </article>
+                <article class="stat-card">
+                    <p class="muted">Current Streak</p>
+                    <p class="stat-value">7 <span>days</span></p>
+                    <p class="stat-note">Keep the momentum going</p>
+                </article>
+                <article class="stat-card">
+                    <p class="muted">Calories Burned</p>
+                    <p class="stat-value">3,250</p>
+                    <p class="stat-note">Estimated total calories</p>
+                </article>
+            </section>
+
+            <section class="charts-grid">
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Weekly Activity</h2>
+                            <p class="muted">Workout duration this week</p>
+                        </div>
+                        <span class="panel-tag">This week</span>
+                    </div>
+                    <div class="bar-chart" role="img" aria-label="Sample workout duration throughout the week">
+                        <div class="bar-column"><div class="bar" style="height:50%"></div><span>Mon</span></div>
+                        <div class="bar-column"><div class="bar" style="height:75%"></div><span>Tue</span></div>
+                        <div class="bar-column"><div class="bar" style="height:34%"></div><span>Wed</span></div>
+                        <div class="bar-column"><div class="bar bar-highlight" style="height:92%"></div><span>Thu</span></div>
+                        <div class="bar-column"><div class="bar" style="height:58%"></div><span>Fri</span></div>
+                        <div class="bar-column"><div class="bar" style="height:83%"></div><span>Sat</span></div>
+                        <div class="bar-column"><div class="bar" style="height:25%"></div><span>Sun</span></div>
+                    </div>
+                    <p class="chart-footnote">Illustrative sample data · Minutes per day</p>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Muscle Groups</h2>
+                            <p class="muted">Exercise distribution</p>
+                        </div>
+                    </div>
+                    <div class="muscle-content">
+                        <div class="donut-chart" role="img" aria-label="Sample distribution: Chest 35%, Back 25%, Legs 25%, Cardio 15%">
+                            <div class="donut-center"><strong>100%</strong><span>Sample</span></div>
+                        </div>
+                        <ul class="legend">
+                            <li><span class="legend-dot chest"></span>Chest <strong>35%</strong></li>
+                            <li><span class="legend-dot back"></span>Back <strong>25%</strong></li>
+                            <li><span class="legend-dot legs"></span>Legs <strong>25%</strong></li>
+                            <li><span class="legend-dot cardio"></span>Cardio <strong>15%</strong></li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <section class="panel quick-access">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Quick Access</h2>
+                        <p class="muted">Choose what you want to do next.</p>
+                    </div>
+                </div>
+                <div class="quick-links">
+                    <a href="exercise-library.html" class="quick-link">
+                        <span class="quick-icon">01</span>
+                        <span><strong>Explore Exercises</strong><small>Find your next exercise</small></span>
+                        <span class="quick-arrow">↗</span>
+                    </a>
+                    <a href="routine-builder.html" class="quick-link">
+                        <span class="quick-icon">02</span>
+                        <span><strong>Build a Routine</strong><small>Create your workout plan</small></span>
+                        <span class="quick-arrow">↗</span>
+                    </a>
+                    <a href="workout-history.html" class="quick-link">
+                        <span class="quick-icon">03</span>
+                        <span><strong>View Progress</strong><small>Review your history</small></span>
+                        <span class="quick-arrow">↗</span>
+                    </a>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <span>FitTrack · Fitness &amp; Workout Planner</span>
+                <span>Sample data for Phase 2 prototype</span>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
