@@ -5,109 +5,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout History | FitTrack</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/tailwind.generated.css">
 </head>
-<body>
-    <div class="app-layout">
-        <aside class="sidebar">
-            <a href="index.html" class="brand"><span class="brand-icon">F</span> FitTrack</a>
-            <nav class="navigation" aria-label="Main navigation">
-                <a class="nav-link" href="dashboard.html">Dashboard</a>
-                <a class="nav-link" href="exercise-library.html">Exercise Library</a>
-                <a class="nav-link" href="exercise-details.html">Exercise Details</a>
-                <a class="nav-link" href="routine-builder.html">Routine Builder</a>
-                <a class="nav-link" href="my-routines.html">My Routines</a>
-                <a class="nav-link" href="active-workout.html">Active Workout</a>
-                <a class="nav-link active" href="workout-history.html">Workout History</a>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="flex min-h-screen">
+
+        <aside class="hidden w-64 shrink-0 border-r border-slate-800 bg-slate-900 p-6 md:block">
+            <a href="index.html" class="text-2xl font-bold text-cyan-400">FitTrack</a>
+            <p class="mb-8 mt-2 text-sm text-slate-400">Fitness & Workout Planner</p>
+
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Dashboard</a>
+                <a href="exercise-library.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Exercise Library</a>
+                <a href="routine-builder.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Routine Builder</a>
+                <a href="my-routines.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">My Routines</a>
+                <a href="active-workout.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Active Workout</a>
+                <a href="workout-history.html" aria-current="page" class="block rounded-lg bg-cyan-500/10 px-4 py-3 font-semibold text-cyan-400">Workout History</a>
             </nav>
-            <div class="sidebar-bottom">Stay consistent.<br><span class="muted">Every workout counts.</span></div>
         </aside>
 
-        <main class="main-content">
-            <header class="topbar">
+        <main class="min-w-0 flex-1 p-4 sm:p-6 lg:p-10">
+
+            <header class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <p class="eyebrow">YOUR JOURNEY</p>
-                    <h1>Workout History &amp; Progress</h1>
-                    <p class="muted">Review your consistency and recent activity.</p>
+                    <p class="text-sm text-cyan-400">YOUR PROGRESS</p>
+                    <h1 class="mt-2 text-3xl font-bold sm:text-4xl">Workout History</h1>
+                    <p class="mt-2 text-slate-400">Review your past workouts and track your progress.</p>
                 </div>
-                <a href="active-workout.html" class="button button-primary">Start Workout</a>
+                <a href="active-workout.html" class="rounded-lg bg-cyan-500 px-5 py-3 text-center font-semibold text-slate-950 hover:bg-cyan-400">+ Start Workout</a>
             </header>
 
-            <section class="stats-grid" aria-label="Workout totals">
-                <article class="stat-card"><p class="muted">Completed Workouts</p><p class="stat-value">24</p><p class="stat-note">All-time total</p></article>
-                <article class="stat-card"><p class="muted">Total Duration</p><p class="stat-value">18 <span>hrs</span></p><p class="stat-note">Estimated total time</p></article>
-                <article class="stat-card"><p class="muted">Calories Burned</p><p class="stat-value">3,250</p><p class="stat-note">Estimated total</p></article>
+            <section class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Total Workouts</p>
+                    <p id="total-workouts" class="mt-3 text-3xl font-bold">0</p>
+                </article>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Total Duration</p>
+                    <p id="total-duration" class="mt-3 text-3xl font-bold">0 min</p>
+                </article>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Exercises Completed</p>
+                    <p id="total-exercises" class="mt-3 text-3xl font-bold">0</p>
+                </article>
+                <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Average Completion</p>
+                    <p id="completion-rate" class="mt-3 text-3xl font-bold">0%</p>
+                </article>
             </section>
 
-            <section class="panel">
-                <div class="panel-heading">
+            <section class="mb-8 rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-6">
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold">Workout Activity</h2>
+                    <p class="mt-1 text-sm text-slate-400">Duration of your latest sessions</p>
+                </div>
+                <div id="activity-chart" class="grid h-48 grid-cols-7 items-end gap-3 border-b border-slate-700 pb-3"></div>
+                <p id="chart-empty" class="mt-4 hidden text-sm text-slate-400">Complete a workout to see your activity here.</p>
+            </section>
+
+            <section class="rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-6">
+                <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h2>Workout History</h2>
-                        <p class="muted">Your recent completed sessions.</p>
+                        <h2 class="text-xl font-bold">Recent Workouts</h2>
+                        <p class="mt-1 text-sm text-slate-400">Your completed training sessions.</p>
                     </div>
-                    <label class="filter-label">Period
-                        <select id="history-filter">
-                            <option value="all">All time</option>
-                            <option value="recent">Recent sessions</option>
-                        </select>
-                    </label>
+                    <label class="sr-only" for="history-filter">Filter workout type</label>
+                    <select id="history-filter" class="rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-slate-200 focus:border-cyan-400 focus:outline-none">
+                        <option value="all">All Workouts</option>
+                        <option value="strength">Strength</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="flexibility">Flexibility</option>
+                    </select>
                 </div>
 
-                <div class="table-wrapper">
-                    <table class="history-table">
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[600px] text-left">
                         <thead>
-                            <tr><th>Date</th><th>Workout</th><th>Duration</th><th>Calories</th><th>Status</th></tr>
+                            <tr class="border-b border-slate-800 text-sm text-slate-400">
+                                <th scope="col" class="px-4 py-4 font-medium">Workout</th>
+                                <th scope="col" class="px-4 py-4 font-medium">Date</th>
+                                <th scope="col" class="px-4 py-4 font-medium">Duration</th>
+                                <th scope="col" class="px-4 py-4 font-medium">Exercises</th>
+                                <th scope="col" class="px-4 py-4 font-medium">Type</th>
+                            </tr>
                         </thead>
-                        <tbody id="history-rows">
-                            <tr data-period="recent"><td>Oct 24, 2026</td><td>Upper Body</td><td>45 min</td><td>320 kcal</td><td><span class="status-pill">Completed</span></td></tr>
-                            <tr data-period="recent"><td>Oct 22, 2026</td><td>Leg Day</td><td>50 min</td><td>410 kcal</td><td><span class="status-pill">Completed</span></td></tr>
-                            <tr data-period="recent"><td>Oct 20, 2026</td><td>Full Body</td><td>35 min</td><td>280 kcal</td><td><span class="status-pill">Completed</span></td></tr>
-                            <tr data-period="all"><td>Oct 17, 2026</td><td>Cardio</td><td>30 min</td><td>240 kcal</td><td><span class="status-pill">Completed</span></td></tr>
-                        </tbody>
+                        <tbody id="history-list"></tbody>
                     </table>
                 </div>
-                <p id="history-empty" class="empty-state" hidden>No workouts match this filter.</p>
+
+                <p id="empty-message" class="hidden py-8 text-center text-slate-400">No workouts found.</p>
             </section>
 
-            <section class="panel">
-                <div class="panel-heading">
-                    <div><h2>Weekly Progress</h2><p class="muted">Sample workout duration by day.</p></div>
-                </div>
-                <div class="bar-chart progress-chart" role="img" aria-label="Sample weekly workout duration chart">
-                    <div class="bar-column"><div class="bar" style="height:45%"></div><span>Mon</span></div>
-                    <div class="bar-column"><div class="bar" style="height:65%"></div><span>Tue</span></div>
-                    <div class="bar-column"><div class="bar" style="height:30%"></div><span>Wed</span></div>
-                    <div class="bar-column"><div class="bar bar-highlight" style="height:85%"></div><span>Thu</span></div>
-                    <div class="bar-column"><div class="bar" style="height:55%"></div><span>Fri</span></div>
-                    <div class="bar-column"><div class="bar" style="height:75%"></div><span>Sat</span></div>
-                    <div class="bar-column"><div class="bar" style="height:20%"></div><span>Sun</span></div>
-                </div>
-            </section>
-
-            <footer class="page-footer">
-                <span>FitTrack · Fitness &amp; Workout Planner</span>
-                <span>Sample history data</span>
+            <footer class="mt-8 border-t border-slate-800 py-6 text-center text-sm text-slate-500">
+                © 2026 FitTrack. Keep moving forward.
             </footer>
         </main>
     </div>
 
     <script>
+        const historyKey = "fittrack-workout-history";
+        const list = document.getElementById("history-list");
         const filter = document.getElementById("history-filter");
-        const rows = [...document.querySelectorAll("#history-rows tr")];
-        const emptyMessage = document.getElementById("history-empty");
+        const emptyMessage = document.getElementById("empty-message");
+        const chart = document.getElementById("activity-chart");
+        const chartEmpty = document.getElementById("chart-empty");
 
-        filter.addEventListener("change", () => {
-            let visibleRows = 0;
+        function getHistory() {
+            try {
+                return JSON.parse(localStorage.getItem(historyKey)) || [];
+            } catch {
+                return [];
+            }
+        }
 
-            rows.forEach((row) => {
-                const show = filter.value === "all" || row.dataset.period === "recent";
-                row.hidden = !show;
-                if (show) visibleRows++;
+        function formatDate(value) {
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) return "Unknown date";
+
+            return date.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric"
+            });
+        }
+
+        function formatDuration(seconds) {
+            const minutes = Math.round(Number(seconds || 0) / 60);
+            return `${minutes} min`;
+        }
+
+        function renderChart(history) {
+            chart.innerHTML = "";
+            const latest = history.slice(0, 7).reverse();
+            chartEmpty.classList.toggle("hidden", latest.length > 0);
+
+            if (!latest.length) return;
+
+            const maxDuration = Math.max(
+                ...latest.map(workout => Number(workout.durationSeconds || 0)),
+                60
+            );
+
+            latest.forEach(workout => {
+                const column = document.createElement("div");
+                column.className = "flex h-full flex-col items-center justify-end gap-2";
+
+                const bar = document.createElement("div");
+                bar.className = "w-full max-w-12 rounded-t-md bg-cyan-500";
+                const duration = Number(workout.durationSeconds || 0);
+                bar.style.height = `${Math.max(5, (duration / maxDuration) * 100)}%`;
+                bar.title = formatDuration(duration);
+
+                const label = document.createElement("span");
+                label.className = "text-xs text-slate-400";
+                label.textContent = new Date(workout.date).toLocaleDateString("en-US", { day: "numeric", month: "short" });
+
+                column.append(bar, label);
+                chart.appendChild(column);
+            });
+        }
+
+        function renderHistory() {
+            const history = getHistory();
+            const filtered = history.filter(workout =>
+                filter.value === "all" || (workout.type || "strength") === filter.value
+            );
+
+            document.getElementById("total-workouts").textContent = history.length;
+
+            const totalSeconds = history.reduce((sum, workout) =>
+                sum + Number(workout.durationSeconds || 0), 0);
+
+            document.getElementById("total-duration").textContent =
+                `${Math.round(totalSeconds / 60)} min`;
+
+            const completedExercises = history.reduce((sum, workout) =>
+                sum + Number(workout.completedExercises ?? workout.exercises ?? 0), 0);
+
+            document.getElementById("total-exercises").textContent = completedExercises;
+
+            const plannedExercises = history.reduce((sum, workout) =>
+                sum + Number(workout.exercises || 0), 0);
+
+            const rate = plannedExercises
+                ? Math.round((completedExercises / plannedExercises) * 100)
+                : 0;
+
+            document.getElementById("completion-rate").textContent = `${rate}%`;
+
+            list.innerHTML = "";
+            emptyMessage.classList.toggle("hidden", filtered.length > 0);
+
+            filtered.forEach(workout => {
+                const row = document.createElement("tr");
+                row.className = "border-b border-slate-800";
+
+                const values = [
+                    workout.name || "Workout",
+                    formatDate(workout.date),
+                    formatDuration(workout.durationSeconds),
+                    `${workout.completedExercises ?? workout.exercises ?? 0} completed`,
+                    workout.type || "strength"
+                ];
+
+                values.forEach((value, index) => {
+                    const cell = document.createElement("td");
+                    cell.className = "px-4 py-5 text-sm";
+
+                    if (index === 0) {
+                        cell.classList.add("font-semibold");
+                    } else {
+                        cell.classList.add("text-slate-300");
+                    }
+
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
+
+                list.appendChild(row);
             });
 
-            emptyMessage.hidden = visibleRows !== 0;
-        });
+            renderChart(history);
+        }
+
+        filter.addEventListener("change", renderHistory);
+        renderHistory();
     </script>
 </body>
 </html>

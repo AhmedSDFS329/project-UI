@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Workout | FitTrack</title>
+    <link rel="stylesheet" href="assets/css/tailwind.generated.css">
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="flex min-h-screen">
+
+        <aside class="hidden w-64 shrink-0 border-r border-slate-800 bg-slate-900 p-6 md:block">
+            <a href="index.html" class="text-2xl font-bold text-cyan-400">FitTrack</a>
+            <p class="mb-8 mt-2 text-sm text-slate-400">Fitness & Workout Planner</p>
+
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Dashboard</a>
+                <a href="exercise-library.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Exercise Library</a>
+                <a href="routine-builder.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Routine Builder</a>
+                <a href="my-routines.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">My Routines</a>
+                <a href="active-workout.html" aria-current="page" class="block rounded-lg bg-cyan-500/10 px-4 py-3 font-semibold text-cyan-400">Active Workout</a>
+                <a href="workout-history.html" class="block rounded-lg px-4 py-3 text-slate-300 hover:bg-slate-800">Workout History</a>
+            </nav>
+        </aside>
+
+        <main class="min-w-0 flex-1 p-4 sm:p-6 lg:p-10">
+            <header class="mb-8">
+                <p class="text-sm text-cyan-400">LET'S GET MOVING</p>
+                <h1 class="mt-2 text-3xl font-bold sm:text-4xl">Active Workout</h1>
+                <p class="mt-2 text-slate-400">Follow your plan and record your training session.</p>
+            </header>
+
+            <section class="mb-6 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+                <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm text-slate-400">CURRENT SESSION</p>
+                        <h2 id="routine-name" class="mt-2 text-2xl font-bold">Full Body Workout</h2>
+                        <p id="routine-meta" class="mt-2 text-sm text-slate-400">Strength · General Fitness</p>
+                    </div>
+
+                    <div class="rounded-xl bg-slate-800 px-6 py-4 text-center">
+                        <p class="text-sm text-slate-400">Elapsed Time</p>
+                        <p id="timer" class="mt-1 text-3xl font-bold text-cyan-400">00:00</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 h-2 overflow-hidden rounded-full bg-slate-800">
+                    <div id="progress-bar" class="h-full rounded-full bg-cyan-500" style="width: 0%"></div>
+                </div>
+                <p id="progress-label" class="mt-2 text-sm text-slate-400">0 of 4 exercises completed</p>
+            </section>
+
+            <section class="mb-6 rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-6">
+                <h2 class="mb-5 text-xl font-bold">Exercise Checklist</h2>
+                <div id="exercise-list" class="space-y-3"></div>
+            </section>
+
+            <section class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Exercises</p>
+                    <p id="exercise-count" class="mt-2 text-2xl font-bold">4</p>
+                </article>
+                <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Completed</p>
+                    <p id="completed-count" class="mt-2 text-2xl font-bold text-emerald-400">0</p>
+                </article>
+                <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                    <p class="text-sm text-slate-400">Remaining</p>
+                    <p id="remaining-count" class="mt-2 text-2xl font-bold">4</p>
+                </article>
+            </section>
+
+            <div class="flex flex-col gap-3 sm:flex-row">
+                <button id="finish-button" type="button" class="rounded-lg bg-cyan-500 px-6 py-3 font-semibold text-slate-950 hover:bg-cyan-400">
+                    Finish Workout
+                </button>
+                <button id="reset-button" type="button" class="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 hover:bg-slate-800">
+                    Reset Session
+                </button>
+                <a href="workout-history.html" class="rounded-lg border border-slate-700 px-6 py-3 text-center font-semibold text-slate-200 hover:bg-slate-800">
+                    View History
+                </a>
+            </div>
+
+            <p id="message" role="status" aria-live="polite" class="mt-4 text-sm text-slate-400"></p>
+
+            <footer class="mt-10 border-t border-slate-800 py-6 text-center text-sm text-slate-500">
+                © 2026 FitTrack. Keep moving forward.
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        const activeRoutineKey = "fittrack-active-routine";
+        const historyKey = "fittrack-workout-history";
+
+        let routine = null;
+
+        try {
+            routine = JSON.parse(localStorage.getItem(activeRoutineKey));
+        } catch {
+            routine = null;
+        }
+
+        const defaultExercises = [
+            { name: "Push-Ups", sets: 3, reps: "12" },
+            { name: "Squats", sets: 3, reps: "15" },
+            { name: "Dumbbell Rows", sets: 3, reps: "10" },
+            { name: "Plank", sets: 3, reps: "30 sec" }
+        ];
+
+        const exercises = (routine && routine.exercises && routine.exercises.length)
+            ? routine.exercises.map(exercise => ({
+                name: exercise.name || exercise.exercise || "Exercise",
+                sets: Number(exercise.sets || 3),
+                reps: exercise.reps || "10",
+                completed: false
+            }))
+            : defaultExercises.map(exercise => ({ ...exercise, completed: false }));
+
+        document.getElementById("routine-name").textContent =
+            routine?.name || "Full Body Workout";
+
+        document.getElementById("routine-meta").textContent =
+            `${routine?.goal || "Strength"} · ${routine?.level || "General Fitness"}`;
+
+        const list = document.getElementById("exercise-list");
+        const timerDisplay = document.getElementById("timer");
+        const message = document.getElementById("message");
+
+        let elapsedSeconds = 0;
+        let timerInterval = null;
+        let sessionStartedAt = new Date();
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60).toString().padStart(2, "0");
+            const remaining = (seconds % 60).toString().padStart(2, "0");
+            return `${minutes}:${remaining}`;
+        }
+
+        function startTimer() {
+            if (timerInterval) return;
+
+            timerInterval = setInterval(() => {
+                elapsedSeconds++;
+                timerDisplay.textContent = formatTime(elapsedSeconds);
+            }, 1000);
+        }
+
+        function renderExercises() {
+            list.innerHTML = "";
+
+            exercises.forEach((exercise, index) => {
+                const row = document.createElement("div");
+                row.className = "flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-950 p-4";
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = exercise.completed;
+                checkbox.className = "h-5 w-5 accent-cyan-500";
+                checkbox.setAttribute("aria-label", `Mark ${exercise.name} complete`);
+                checkbox.addEventListener("change", () => {
+                    exercise.completed = checkbox.checked;
+                    renderExercises();
+                });
+
+                const info = document.createElement("div");
+                info.className = "min-w-0 flex-1";
+
+                const name = document.createElement("p");
+                name.className = exercise.completed
+                    ? "font-semibold text-slate-500 line-through"
+                    : "font-semibold";
+                name.textContent = exercise.name;
+
+                const details = document.createElement("p");
+                details.className = "mt-1 text-sm text-slate-400";
+                details.textContent = `${exercise.sets} sets · ${exercise.reps} reps`;
+
+                info.append(name, details);
+
+                const status = document.createElement("span");
+                status.className = exercise.completed
+                    ? "text-sm text-emerald-400"
+                    : "text-sm text-slate-500";
+                status.textContent = exercise.completed ? "Done" : "Pending";
+
+                row.append(checkbox, info, status);
+                list.appendChild(row);
+            });
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const completed = exercises.filter(exercise => exercise.completed).length;
+            const total = exercises.length;
+            const remaining = total - completed;
+            const percentage = total ? (completed / total) * 100 : 0;
+
+            document.getElementById("exercise-count").textContent = total;
+            document.getElementById("completed-count").textContent = completed;
+            document.getElementById("remaining-count").textContent = remaining;
+            document.getElementById("progress-label").textContent =
+                `${completed} of ${total} exercises completed`;
+            document.getElementById("progress-bar").style.width = `${percentage}%`;
+        }
+
+        document.getElementById("finish-button").addEventListener("click", () => {
+            if (!exercises.length) {
+                message.textContent = "Add exercises to your routine before finishing.";
+                return;
+            }
+
+            if (!confirm("Finish and save this workout session?")) return;
+
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            let history = [];
+            try {
+                history = JSON.parse(localStorage.getItem(historyKey)) || [];
+            } catch {
+                history = [];
+            }
+
+            history.unshift({
+                name: routine?.name || "Full Body Workout",
+                date: new Date().toISOString(),
+                durationSeconds: elapsedSeconds,
+                exercises: exercises.length,
+                completedExercises: exercises.filter(exercise => exercise.completed).length,
+                type: "strength"
+            });
+
+            localStorage.setItem(historyKey, JSON.stringify(history));
+            message.textContent = "Workout saved! Opening your workout history...";
+
+            setTimeout(() => {
+                window.location.href = "workout-history.html";
+            }, 700);
+        });
+
+        document.getElementById("reset-button").addEventListener("click", () => {
+            if (!confirm("Reset the current workout session?")) return;
+
+            clearInterval(timerInterval);
+            timerInterval = null;
+            elapsedSeconds = 0;
+            sessionStartedAt = new Date();
+            timerDisplay.textContent = "00:00";
+            exercises.forEach(exercise => exercise.completed = false);
+            message.textContent = "";
+            renderExercises();
+            startTimer();
+        });
+
+        renderExercises();
+        startTimer();
+    </script>
+</body>
+</html>

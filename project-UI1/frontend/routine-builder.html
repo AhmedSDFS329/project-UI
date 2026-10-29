@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create and customize workout routines with FitTrack.">
+    <title>Routine Builder | FitTrack</title>
+    <link rel="stylesheet" href="assets/css/tailwind.generated.css">
+</head>
+
+<body class="min-h-screen bg-slate-950 font-sans text-slate-100">
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside class="hidden w-60 shrink-0 border-r border-slate-800 bg-slate-900 p-5 md:flex md:flex-col">
+            <a href="index.html" class="mb-10 flex items-center gap-2 text-xl font-bold">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500 text-slate-950">F</span>
+                FitTrack
+            </a>
+
+            <p class="mb-3 text-xs uppercase tracking-widest text-slate-500">Workspace</p>
+
+            <nav aria-label="Main navigation" class="space-y-2">
+                <a href="dashboard.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">Dashboard</a>
+                <a href="exercise-library.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">Exercise Library</a>
+                <a href="routine-builder.html" aria-current="page" class="block rounded-lg bg-cyan-500/10 px-4 py-3 font-semibold text-cyan-400">Routine Builder</a>
+                <a href="my-routines.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">My Routines</a>
+                <a href="active-workout.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">Active Workout</a>
+                <a href="workout-history.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">Workout History &amp; Progress</a>
+            </nav>
+
+            <div class="mt-auto border-t border-slate-800 pt-5">
+                <p class="font-semibold">Alex Morgan</p>
+                <p class="mt-1 text-sm text-slate-400">Profile &amp; Settings</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">
+
+            <header class="mb-8">
+                <p class="mb-2 text-sm text-cyan-400">WORKSPACE / Routine Builder</p>
+                <h1 class="text-3xl font-bold">Routine Builder</h1>
+                <p class="mt-2 text-slate-400">Create a workout plan that matches your goals.</p>
+            </header>
+
+            <form id="routine-form" class="grid grid-cols-1 items-start gap-6 xl:grid-cols-3">
+
+                <!-- Routine Settings -->
+                <section class="space-y-6 xl:col-span-2">
+
+                    <div class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                        <h2 class="text-xl font-bold">Routine Information</h2>
+
+                        <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <div class="sm:col-span-2">
+                                <label for="routine-name" class="mb-2 block text-sm font-medium">Routine Name</label>
+                                <input id="routine-name" name="routineName" type="text"
+                                    placeholder="e.g. Upper Body Strength" required
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30">
+                            </div>
+
+                            <div>
+                                <label for="goal" class="mb-2 block text-sm font-medium">Fitness Goal</label>
+                                <select id="goal" name="goal" required
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option value="Strength">Build Strength</option>
+                                    <option value="Muscle">Build Muscle</option>
+                                    <option value="Weight Loss">Weight Loss</option>
+                                    <option value="Endurance">Improve Endurance</option>
+                                    <option value="General Fitness">General Fitness</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="level" class="mb-2 block text-sm font-medium">Difficulty Level</label>
+                                <select id="level" name="level"
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option>Beginner</option>
+                                    <option>Intermediate</option>
+                                    <option>Advanced</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="days" class="mb-2 block text-sm font-medium">Days Per Week</label>
+                                <select id="days" name="days"
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option value="2">2 days</option>
+                                    <option value="3" selected>3 days</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="duration" class="mb-2 block text-sm font-medium">Session Duration</label>
+                                <select id="duration" name="duration"
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option value="20">20 minutes</option>
+                                    <option value="30">30 minutes</option>
+                                    <option value="45" selected>45 minutes</option>
+                                    <option value="60">60 minutes</option>
+                                    <option value="90">90 minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Exercise -->
+                    <div class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                                <h2 class="text-xl font-bold">Exercises</h2>
+                                <p class="mt-1 text-sm text-slate-400">Add exercises to your routine.</p>
+                            </div>
+                            <a href="exercise-library.html" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">
+                                Browse Library
+                            </a>
+                        </div>
+
+                        <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                            <div>
+                                <label for="exercise-select" class="mb-2 block text-sm font-medium">Exercise</label>
+                                <select id="exercise-select"
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option value="Push-Up">Push-Up</option>
+                                    <option value="Dumbbell Bench Press">Dumbbell Bench Press</option>
+                                    <option value="Squat">Squat</option>
+                                    <option value="Deadlift">Deadlift</option>
+                                    <option value="Plank">Plank</option>
+                                    <option value="Pull-Up">Pull-Up</option>
+                                    <option value="Dumbbell Shoulder Press">Dumbbell Shoulder Press</option>
+                                    <option value="Barbell Row">Barbell Row</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="exercise-sets" class="mb-2 block text-sm font-medium">Sets</label>
+                                <select id="exercise-sets"
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option value="2">2 sets</option>
+                                    <option value="3" selected>3 sets</option>
+                                    <option value="4">4 sets</option>
+                                    <option value="5">5 sets</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="exercise-reps" class="mb-2 block text-sm font-medium">Reps</label>
+                                <select id="exercise-reps"
+                                    class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                                    <option value="8">8 reps</option>
+                                    <option value="10" selected>10 reps</option>
+                                    <option value="12">12 reps</option>
+                                    <option value="15">15 reps</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="button" id="add-exercise"
+                            class="mt-4 rounded-lg bg-cyan-500 px-5 py-3 font-semibold text-slate-950 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300">
+                            + Add Exercise
+                        </button>
+
+                        <p id="exercise-message" class="mt-3 text-sm text-slate-400" role="status" aria-live="polite"></p>
+
+                        <div class="mt-5 overflow-x-auto">
+                            <table class="w-full min-w-[500px] text-left text-sm">
+                                <thead class="bg-slate-800 text-slate-300">
+                                    <tr>
+                                        <th scope="col" class="rounded-l-lg px-4 py-3">Exercise</th>
+                                        <th scope="col" class="px-4 py-3">Sets</th>
+                                        <th scope="col" class="px-4 py-3">Reps</th>
+                                        <th scope="col" class="rounded-r-lg px-4 py-3">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="exercise-list" class="divide-y divide-slate-800">
+                                    <tr id="empty-row">
+                                        <td colspan="4" class="px-4 py-8 text-center text-slate-400">
+                                            No exercises added yet. Choose an exercise above.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Summary -->
+                <aside class="h-fit rounded-xl border border-slate-800 bg-slate-900 p-5">
+                    <h2 class="text-xl font-bold">Routine Summary</h2>
+                    <p class="mt-2 text-sm text-slate-400">Review your plan before saving it.</p>
+
+                    <div class="mt-5 space-y-4">
+                        <div class="flex items-center justify-between rounded-lg bg-slate-800 p-4">
+                            <span class="text-sm text-slate-400">Exercises</span>
+                            <span id="total-exercises" class="text-xl font-bold">0</span>
+                        </div>
+
+                        <div class="flex items-center justify-between rounded-lg bg-slate-800 p-4">
+                            <span class="text-sm text-slate-400">Total Sets</span>
+                            <span id="total-sets" class="text-xl font-bold">0</span>
+                        </div>
+
+                        <div class="flex items-center justify-between rounded-lg bg-slate-800 p-4">
+                            <span class="text-sm text-slate-400">Total Reps</span>
+                            <span id="total-reps" class="text-xl font-bold">0</span>
+                        </div>
+
+                        <div class="rounded-lg border border-slate-700 p-4">
+                            <p class="text-sm text-slate-400">Goal</p>
+                            <p id="summary-goal" class="mt-1 font-semibold">Build Strength</p>
+
+                            <p class="mt-4 text-sm text-slate-400">Training Days</p>
+                            <p id="summary-days" class="mt-1 font-semibold">3 days per week</p>
+
+                            <p class="mt-4 text-sm text-slate-400">Session Duration</p>
+                            <p id="summary-duration" class="mt-1 font-semibold">45 minutes</p>
+                        </div>
+                    </div>
+
+                    <p id="form-message" class="mt-4 text-sm text-slate-300" role="status" aria-live="polite"></p>
+
+                    <button type="submit"
+                        class="mt-5 w-full rounded-lg bg-cyan-500 px-4 py-3 font-semibold text-slate-950 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300">
+                        Save Routine
+                    </button>
+
+                    <a href="my-routines.html"
+                        class="mt-3 block rounded-lg border border-slate-700 px-4 py-3 text-center font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                        View My Routines
+                    </a>
+                </aside>
+            </form>
+
+            <footer class="mt-10 border-t border-slate-800 pt-5 text-center text-sm text-slate-500">
+                FitTrack · Fitness &amp; Workout Planner · Sample prototype
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        const routineForm = document.getElementById("routine-form");
+        const exerciseSelect = document.getElementById("exercise-select");
+        const setsSelect = document.getElementById("exercise-sets");
+        const repsSelect = document.getElementById("exercise-reps");
+        const exerciseList = document.getElementById("exercise-list");
+        const exerciseMessage = document.getElementById("exercise-message");
+
+        const exercises = [];
+
+        function updateSummary() {
+            document.getElementById("total-exercises").textContent = exercises.length;
+
+            document.getElementById("total-sets").textContent =
+                exercises.reduce((total, exercise) => total + exercise.sets, 0);
+
+            document.getElementById("total-reps").textContent =
+                exercises.reduce((total, exercise) => total + exercise.sets * exercise.reps, 0);
+
+            document.getElementById("summary-goal").textContent =
+                document.getElementById("goal").selectedOptions[0].textContent;
+
+            document.getElementById("summary-days").textContent =
+                document.getElementById("days").value + " days per week";
+
+            document.getElementById("summary-duration").textContent =
+                document.getElementById("duration").value + " minutes";
+        }
+
+        function renderExercises() {
+            exerciseList.replaceChildren();
+
+            if (exercises.length === 0) {
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+
+                cell.colSpan = 4;
+                cell.className = "px-4 py-8 text-center text-slate-400";
+                cell.textContent = "No exercises added yet. Choose an exercise above.";
+
+                row.appendChild(cell);
+                exerciseList.appendChild(row);
+                updateSummary();
+                return;
+            }
+
+            exercises.forEach((exercise, index) => {
+                const row = document.createElement("tr");
+
+                const nameCell = document.createElement("td");
+                nameCell.className = "px-4 py-4 font-medium";
+                nameCell.textContent = exercise.name;
+
+                const setsCell = document.createElement("td");
+                setsCell.className = "px-4 py-4 text-slate-300";
+                setsCell.textContent = exercise.sets;
+
+                const repsCell = document.createElement("td");
+                repsCell.className = "px-4 py-4 text-slate-300";
+                repsCell.textContent = exercise.reps;
+
+                const actionCell = document.createElement("td");
+                actionCell.className = "px-4 py-4";
+
+                const removeButton = document.createElement("button");
+                removeButton.type = "button";
+                removeButton.className = "text-sm font-semibold text-red-400 hover:text-red-300";
+                removeButton.textContent = "Remove";
+                removeButton.setAttribute("aria-label", "Remove " + exercise.name);
+
+                removeButton.addEventListener("click", () => {
+                    exercises.splice(index, 1);
+                    renderExercises();
+                    exerciseMessage.textContent = "Exercise removed.";
+                });
+
+                actionCell.appendChild(removeButton);
+                row.append(nameCell, setsCell, repsCell, actionCell);
+                exerciseList.appendChild(row);
+            });
+
+            updateSummary();
+        }
+
+        document.getElementById("add-exercise").addEventListener("click", () => {
+            exercises.push({
+                name: exerciseSelect.value,
+                sets: Number(setsSelect.value),
+                reps: Number(repsSelect.value)
+            });
+
+            renderExercises();
+            exerciseMessage.textContent = exerciseSelect.value + " added to your routine.";
+        });
+
+        ["goal", "days", "duration"].forEach((id) => {
+            document.getElementById(id).addEventListener("change", updateSummary);
+        });
+
+        routineForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const routineName = document.getElementById("routine-name").value.trim();
+            const message = document.getElementById("form-message");
+
+            if (!routineName) {
+                message.textContent = "Please enter a routine name.";
+                document.getElementById("routine-name").focus();
+                return;
+            }
+
+            if (exercises.length === 0) {
+                message.textContent = "Add at least one exercise before saving.";
+                document.getElementById("add-exercise").focus();
+                return;
+            }
+
+            const routine = {
+                id: Date.now(),
+                name: routineName,
+                goal: document.getElementById("goal").value,
+                level: document.getElementById("level").value,
+                days: Number(document.getElementById("days").value),
+                duration: Number(document.getElementById("duration").value),
+                exercises: exercises.map((exercise) => ({ ...exercise }))
+            };
+
+            try {
+                const savedRoutines = JSON.parse(localStorage.getItem("fittrack-routines") || "[]");
+                savedRoutines.push(routine);
+                localStorage.setItem("fittrack-routines", JSON.stringify(savedRoutines));
+
+                message.textContent = "Routine saved successfully! Opening My Routines...";
+                window.location.href = "my-routines.html";
+            } catch (error) {
+                message.textContent = "Could not save the routine in this browser. Please try again.";
+            }
+        });
+
+        updateSummary();
+    </script>
+</body>
+</html>

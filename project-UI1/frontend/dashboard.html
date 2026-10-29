@@ -1,139 +1,345 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitTrack fitness dashboard and workout progress">
     <title>Dashboard | FitTrack</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/tailwind.generated.css">
 </head>
-<body>
-    <div class="app-layout">
-        <aside class="sidebar">
-            <a href="index.html" class="brand"><span class="brand-icon">F</span> FitTrack</a>
-            <nav class="navigation" aria-label="Main navigation">
-                <a class="nav-link active" href="dashboard.html">Dashboard</a>
-                <a class="nav-link" href="exercise-library.html">Exercise Library</a>
-                <a class="nav-link" href="exercise-details.html">Exercise Details</a>
-                <a class="nav-link" href="routine-builder.html">Routine Builder</a>
-                <a class="nav-link" href="my-routines.html">My Routines</a>
-                <a class="nav-link" href="active-workout.html">Active Workout</a>
-                <a class="nav-link" href="workout-history.html">Workout History</a>
+
+<body class="min-h-screen bg-brandBg font-sans text-brandText">
+
+    <div class="min-h-screen lg:flex">
+
+        <!-- Sidebar -->
+        <aside class="w-full border-b border-slate-700 bg-brandBg p-4 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-60 lg:flex-col lg:border-b-0 lg:border-r lg:p-5">
+
+            <a href="index.html"
+               class="mb-5 flex items-center gap-3 text-xl font-bold"
+               aria-label="FitTrack home">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-brandAccent text-brandBg">
+                    F
+                </span>
+                FitTrack
+            </a>
+
+            <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-brandMuted">
+                Workspace
+            </p>
+
+            <nav aria-label="Main navigation" class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:flex-col">
+                <a href="dashboard.html"
+                   aria-current="page"
+                   class="rounded-lg bg-brandAccent/15 px-3 py-3 text-sm font-semibold text-brandAccent">
+                    Dashboard
+                </a>
+
+                <a href="exercise-library.html"
+                   class="rounded-lg px-3 py-3 text-sm text-brandMuted hover:bg-brandCard hover:text-brandText">
+                    Exercise Library
+                </a>
+
+                <a href="routine-builder.html"
+                   class="rounded-lg px-3 py-3 text-sm text-brandMuted hover:bg-brandCard hover:text-brandText">
+                    Routine Builder
+                </a>
+
+                <a href="my-routines.html"
+                   class="rounded-lg px-3 py-3 text-sm text-brandMuted hover:bg-brandCard hover:text-brandText">
+                    My Routines
+                </a>
+
+                <a href="active-workout.html"
+                   class="rounded-lg px-3 py-3 text-sm text-brandMuted hover:bg-brandCard hover:text-brandText">
+                    Active Workout
+                </a>
+
+                <a href="workout-history.html"
+                   class="rounded-lg px-3 py-3 text-sm text-brandMuted hover:bg-brandCard hover:text-brandText">
+                    Workout History
+                </a>
             </nav>
-            <div class="sidebar-bottom">Stay consistent.<br><span class="muted">Every workout counts.</span></div>
+
+            <div class="mt-6 border-t border-slate-700 pt-5 lg:mt-auto">
+                <p class="font-semibold">Alex Morgan</p>
+                <p class="mt-1 text-sm text-brandMuted">Profile & Settings</p>
+                <a href="index.html"
+                   class="mt-3 inline-block text-sm text-brandAccent hover:underline">
+                    Back to Home
+                </a>
+            </div>
         </aside>
 
-        <main class="main-content">
-            <header class="topbar">
+        <!-- Main content -->
+        <main class="min-w-0 flex-1 p-4 sm:p-6 lg:ml-60 lg:p-8">
+
+            <!-- Header -->
+            <header class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <p class="eyebrow">FITNESS OVERVIEW</p>
-                    <h1>Dashboard</h1>
-                    <p class="muted">Track your activity and keep moving forward.</p>
+                    <p class="mb-2 text-xs uppercase tracking-widest text-brandMuted">
+                        Workspace / Dashboard
+                    </p>
+                    <h1 class="text-3xl font-bold">Dashboard</h1>
+                    <p class="mt-2 text-brandMuted">
+                        Welcome back, Alex! Here's your fitness progress at a glance.
+                    </p>
                 </div>
-                <a href="active-workout.html" class="button button-primary">Start Workout</a>
+
+                <div class="flex flex-wrap gap-3">
+                    <a href="active-workout.html"
+                       class="rounded-lg bg-brandAccent px-4 py-3 text-center text-sm font-bold text-brandBg hover:opacity-90">
+                        Start Workout
+                    </a>
+
+                    <a href="routine-builder.html"
+                       class="rounded-lg border border-slate-600 px-4 py-3 text-center text-sm font-semibold hover:bg-brandCard">
+                        Build Routine
+                    </a>
+                </div>
             </header>
 
-            <section class="welcome-panel">
-                <div>
-                    <p class="eyebrow">YOUR FITNESS JOURNEY</p>
-                    <h2>Welcome back!</h2>
-                    <p>Small steps every day lead to big results.</p>
+            <!-- Statistics -->
+            <section aria-labelledby="stats-heading" class="mb-8">
+                <h2 id="stats-heading" class="sr-only">Fitness statistics</h2>
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+                    <article class="rounded-2xl border border-slate-700 bg-brandCard p-5">
+                        <p class="text-sm text-brandMuted">Total Workouts</p>
+                        <p class="mt-3 text-3xl font-bold">24</p>
+                        <p class="mt-2 text-xs text-brandMuted">Completed all time</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-slate-700 bg-brandCard p-5">
+                        <p class="text-sm text-brandMuted">Active Minutes</p>
+                        <p class="mt-3 text-3xl font-bold">1,280 <span class="text-base">min</span></p>
+                        <p class="mt-2 text-xs text-brandMuted">Training time all time</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-slate-700 bg-brandCard p-5">
+                        <p class="text-sm text-brandMuted">Calories Burned</p>
+                        <p class="mt-3 text-3xl font-bold">8,450 <span class="text-base">kcal</span></p>
+                        <p class="mt-2 text-xs text-brandMuted">Estimated total</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-slate-700 bg-brandCard p-5">
+                        <p class="text-sm text-brandMuted">Current Streak</p>
+                        <p class="mt-3 text-3xl font-bold">5 days</p>
+                        <p class="mt-2 text-xs text-brandSuccess">Keep showing up</p>
+                    </article>
+
                 </div>
-                <span class="welcome-symbol" aria-hidden="true">✦</span>
             </section>
 
-            <section class="stats-grid" aria-label="Workout summary">
-                <article class="stat-card">
-                    <p class="muted">Workouts Completed</p>
-                    <p class="stat-value">24</p>
-                    <p class="stat-note">Total completed workouts</p>
+            <!-- Charts -->
+            <section aria-label="Workout analytics" class="mb-8 grid grid-cols-1 gap-5 xl:grid-cols-3">
+
+                <!-- Weekly activity chart -->
+                <article class="rounded-2xl border border-slate-700 bg-brandCard p-5 xl:col-span-2">
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold">Weekly Activity</h2>
+                        <p class="mt-1 text-sm text-brandMuted">
+                            Workout duration by day
+                        </p>
+                    </div>
+
+                    <div class="flex h-56 items-end justify-around gap-3 border-b border-slate-600 px-2">
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-slate-500" style="height: 55%;" role="img" aria-label="Monday: 45 minutes"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Mon</span>
+                        </div>
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-slate-500" style="height: 43%;" role="img" aria-label="Tuesday: 35 minutes"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Tue</span>
+                        </div>
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-slate-500" style="height: 30%;" role="img" aria-label="Wednesday: 25 minutes"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Wed</span>
+                        </div>
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-brandAccent" style="height: 72%;" role="img" aria-label="Thursday: 60 minutes"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Thu</span>
+                        </div>
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-slate-500" style="height: 55%;" role="img" aria-label="Friday: 45 minutes"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Fri</span>
+                        </div>
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-slate-500" style="height: 20%;" role="img" aria-label="Saturday: 15 minutes"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Sat</span>
+                        </div>
+
+                        <div class="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                            <div class="w-full max-w-12 rounded-t-md bg-slate-700" style="height: 4%;" role="img" aria-label="Sunday: no workout"></div>
+                            <span class="pb-2 text-xs text-brandMuted">Sun</span>
+                        </div>
+
+                    </div>
+
+                    <p class="mt-4 text-xs text-brandMuted">
+                        Sample activity data for the UI prototype.
+                    </p>
                 </article>
-                <article class="stat-card">
-                    <p class="muted">Current Streak</p>
-                    <p class="stat-value">7 <span>days</span></p>
-                    <p class="stat-note">Keep the momentum going</p>
-                </article>
-                <article class="stat-card">
-                    <p class="muted">Calories Burned</p>
-                    <p class="stat-value">3,250</p>
-                    <p class="stat-note">Estimated total calories</p>
+
+                <!-- Workout distribution -->
+                <article class="rounded-2xl border border-slate-700 bg-brandCard p-5">
+                    <h2 class="text-lg font-bold">Workout Distribution</h2>
+                    <p class="mt-1 text-sm text-brandMuted">Completed workouts by type</p>
+
+                    <div class="mx-auto my-7 flex h-40 w-40 items-center justify-center rounded-full"
+                         style="background: conic-gradient(#00b0c8 0% 45%, #64748b 45% 70%, #94a3b8 70% 90%, #334155 90% 100%);"
+                         role="img"
+                         aria-label="Workout distribution: strength 45 percent, cardio 25 percent, flexibility 20 percent, other 10 percent">
+
+                        <div class="flex h-28 w-28 flex-col items-center justify-center rounded-full bg-brandCard">
+                            <span class="text-3xl font-bold">24</span>
+                            <span class="text-xs text-brandMuted">Workouts</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center justify-between">
+                            <span class="flex items-center gap-2">
+                                <span class="h-3 w-3 rounded-sm bg-brandAccent"></span>
+                                Strength
+                            </span>
+                            <span class="text-brandMuted">45%</span>
+                        </li>
+
+                        <li class="flex items-center justify-between">
+                            <span class="flex items-center gap-2">
+                                <span class="h-3 w-3 rounded-sm bg-slate-500"></span>
+                                Cardio
+                            </span>
+                            <span class="text-brandMuted">25%</span>
+                        </li>
+
+                        <li class="flex items-center justify-between">
+                            <span class="flex items-center gap-2">
+                                <span class="h-3 w-3 rounded-sm bg-slate-400"></span>
+                                Flexibility
+                            </span>
+                            <span class="text-brandMuted">20%</span>
+                        </li>
+
+                        <li class="flex items-center justify-between">
+                            <span class="flex items-center gap-2">
+                                <span class="h-3 w-3 rounded-sm bg-slate-700"></span>
+                                Other
+                            </span>
+                            <span class="text-brandMuted">10%</span>
+                        </li>
+                    </ul>
                 </article>
             </section>
 
-            <section class="charts-grid">
-                <article class="panel">
-                    <div class="panel-heading">
-                        <div>
-                            <h2>Weekly Activity</h2>
-                            <p class="muted">Workout duration this week</p>
-                        </div>
-                        <span class="panel-tag">This week</span>
-                    </div>
-                    <div class="bar-chart" role="img" aria-label="Sample workout duration throughout the week">
-                        <div class="bar-column"><div class="bar" style="height:50%"></div><span>Mon</span></div>
-                        <div class="bar-column"><div class="bar" style="height:75%"></div><span>Tue</span></div>
-                        <div class="bar-column"><div class="bar" style="height:34%"></div><span>Wed</span></div>
-                        <div class="bar-column"><div class="bar bar-highlight" style="height:92%"></div><span>Thu</span></div>
-                        <div class="bar-column"><div class="bar" style="height:58%"></div><span>Fri</span></div>
-                        <div class="bar-column"><div class="bar" style="height:83%"></div><span>Sat</span></div>
-                        <div class="bar-column"><div class="bar" style="height:25%"></div><span>Sun</span></div>
-                    </div>
-                    <p class="chart-footnote">Illustrative sample data · Minutes per day</p>
-                </article>
+            <!-- Recent workouts -->
+            <section aria-labelledby="recent-heading" class="mb-8 rounded-2xl border border-slate-700 bg-brandCard p-5">
 
-                <article class="panel">
-                    <div class="panel-heading">
-                        <div>
-                            <h2>Muscle Groups</h2>
-                            <p class="muted">Exercise distribution</p>
-                        </div>
-                    </div>
-                    <div class="muscle-content">
-                        <div class="donut-chart" role="img" aria-label="Sample distribution: Chest 35%, Back 25%, Legs 25%, Cardio 15%">
-                            <div class="donut-center"><strong>100%</strong><span>Sample</span></div>
-                        </div>
-                        <ul class="legend">
-                            <li><span class="legend-dot chest"></span>Chest <strong>35%</strong></li>
-                            <li><span class="legend-dot back"></span>Back <strong>25%</strong></li>
-                            <li><span class="legend-dot legs"></span>Legs <strong>25%</strong></li>
-                            <li><span class="legend-dot cardio"></span>Cardio <strong>15%</strong></li>
-                        </ul>
-                    </div>
-                </article>
-            </section>
-
-            <section class="panel quick-access">
-                <div class="panel-heading">
+                <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h2>Quick Access</h2>
-                        <p class="muted">Choose what you want to do next.</p>
+                        <h2 id="recent-heading" class="text-lg font-bold">Recent Workouts</h2>
+                        <p class="mt-1 text-sm text-brandMuted">Your latest completed sessions</p>
                     </div>
+
+                    <a href="workout-history.html"
+                       class="text-sm font-semibold text-brandAccent hover:underline">
+                        View History →
+                    </a>
                 </div>
-                <div class="quick-links">
-                    <a href="exercise-library.html" class="quick-link">
-                        <span class="quick-icon">01</span>
-                        <span><strong>Explore Exercises</strong><small>Find your next exercise</small></span>
-                        <span class="quick-arrow">↗</span>
-                    </a>
-                    <a href="routine-builder.html" class="quick-link">
-                        <span class="quick-icon">02</span>
-                        <span><strong>Build a Routine</strong><small>Create your workout plan</small></span>
-                        <span class="quick-arrow">↗</span>
-                    </a>
-                    <a href="workout-history.html" class="quick-link">
-                        <span class="quick-icon">03</span>
-                        <span><strong>View Progress</strong><small>Review your history</small></span>
-                        <span class="quick-arrow">↗</span>
-                    </a>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[620px] text-left text-sm">
+                        <thead>
+                            <tr class="bg-brandBg text-brandMuted">
+                                <th scope="col" class="rounded-l-lg px-4 py-3 font-medium">Date</th>
+                                <th scope="col" class="px-4 py-3 font-medium">Workout</th>
+                                <th scope="col" class="px-4 py-3 font-medium">Duration</th>
+                                <th scope="col" class="px-4 py-3 font-medium">Exercises</th>
+                                <th scope="col" class="rounded-r-lg px-4 py-3 font-medium">Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y divide-slate-700">
+                            <tr>
+                                <td class="px-4 py-4 text-brandMuted">Oct 23, 2026</td>
+                                <td class="px-4 py-4 font-medium">Upper Body Strength</td>
+                                <td class="px-4 py-4">52 min</td>
+                                <td class="px-4 py-4">5 / 5</td>
+                                <td class="px-4 py-4 text-brandSuccess">Completed</td>
+                            </tr>
+
+                            <tr>
+                                <td class="px-4 py-4 text-brandMuted">Oct 22, 2026</td>
+                                <td class="px-4 py-4 font-medium">Lower Body Workout</td>
+                                <td class="px-4 py-4">50 min</td>
+                                <td class="px-4 py-4">5 / 5</td>
+                                <td class="px-4 py-4 text-brandSuccess">Completed</td>
+                            </tr>
+
+                            <tr>
+                                <td class="px-4 py-4 text-brandMuted">Oct 21, 2026</td>
+                                <td class="px-4 py-4 font-medium">Cardio & Conditioning</td>
+                                <td class="px-4 py-4">35 min</td>
+                                <td class="px-4 py-4">4 / 4</td>
+                                <td class="px-4 py-4 text-brandSuccess">Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
-            <footer class="page-footer">
-                <span>FitTrack · Fitness &amp; Workout Planner</span>
-                <span>Sample data for Phase 2 prototype</span>
+            <!-- Quick actions -->
+            <section aria-labelledby="actions-heading">
+                <h2 id="actions-heading" class="text-lg font-bold">Quick Actions</h2>
+                <p class="mb-4 mt-1 text-sm text-brandMuted">
+                    Your next step, one tap away.
+                </p>
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+                    <a href="exercise-library.html"
+                       class="rounded-xl border border-slate-700 bg-brandCard p-4 hover:border-brandAccent">
+                        <h3 class="font-semibold text-brandAccent">Browse Exercises</h3>
+                        <p class="mt-2 text-sm text-brandMuted">Explore the exercise library.</p>
+                    </a>
+
+                    <a href="routine-builder.html"
+                       class="rounded-xl border border-slate-700 bg-brandCard p-4 hover:border-brandAccent">
+                        <h3 class="font-semibold text-brandAccent">Build a Routine</h3>
+                        <p class="mt-2 text-sm text-brandMuted">Plan your next session.</p>
+                    </a>
+
+                    <a href="active-workout.html"
+                       class="rounded-xl border border-slate-700 bg-brandCard p-4 hover:border-brandAccent">
+                        <h3 class="font-semibold text-brandAccent">Start a Workout</h3>
+                        <p class="mt-2 text-sm text-brandMuted">Begin a training session.</p>
+                    </a>
+
+                    <a href="workout-history.html"
+                       class="rounded-xl border border-slate-700 bg-brandCard p-4 hover:border-brandAccent">
+                        <h3 class="font-semibold text-brandAccent">View Progress</h3>
+                        <p class="mt-2 text-sm text-brandMuted">Review your consistency.</p>
+                    </a>
+
+                </div>
+            </section>
+
+            <footer class="mt-10 border-t border-slate-700 pt-5 text-center text-xs text-brandMuted">
+                FitTrack · Fitness & Workout Planner · Static UI prototype
             </footer>
+
         </main>
     </div>
+
 </body>
 </html>
+```

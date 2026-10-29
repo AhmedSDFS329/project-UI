@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse exercises and discover workout techniques with FitTrack.">
+    <title>Exercise Library | FitTrack</title>
+
+    <link rel="stylesheet" href="assets/css/tailwind.generated.css">
+</head>
+
+<body class="min-h-screen bg-slate-950 font-sans text-slate-100">
+
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside class="hidden w-60 shrink-0 border-r border-slate-800 bg-slate-900 p-5 md:flex md:flex-col">
+
+            <a href="index.html" class="mb-10 flex items-center gap-2 text-xl font-bold">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500 text-slate-950">F</span>
+                FitTrack
+            </a>
+
+            <p class="mb-3 text-xs uppercase tracking-widest text-slate-500">
+                Workspace
+            </p>
+
+            <nav aria-label="Main navigation" class="space-y-2">
+                <a href="dashboard.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    Dashboard
+                </a>
+
+                <a href="exercise-library.html" aria-current="page"
+                   class="block rounded-lg bg-cyan-500/10 px-4 py-3 font-semibold text-cyan-400">
+                    Exercise Library
+                </a>
+
+                <a href="routine-builder.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    Routine Builder
+                </a>
+
+                <a href="my-routines.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    My Routines
+                </a>
+
+                <a href="active-workout.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    Active Workout
+                </a>
+
+                <a href="workout-history.html" class="block rounded-lg px-4 py-3 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    Workout History &amp; Progress
+                </a>
+            </nav>
+
+            <div class="mt-auto border-t border-slate-800 pt-5">
+                <p class="font-semibold">Alex Morgan</p>
+                <p class="mt-1 text-sm text-slate-400">Profile &amp; Settings</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">
+
+            <!-- Page Header -->
+            <header class="mb-8">
+                <p class="mb-2 text-sm text-cyan-400">WORKSPACE / Exercise Library</p>
+
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                        <h1 class="text-3xl font-bold">Exercise Library</h1>
+                        <p class="mt-2 text-slate-400">
+                            Discover exercises and build your training knowledge.
+                        </p>
+                    </div>
+
+                    <span class="rounded-full bg-slate-800 px-3 py-2 text-sm text-cyan-400">
+                        8 Exercises
+                    </span>
+                </div>
+            </header>
+
+            <!-- Search -->
+            <form action="exercise-library.html" method="get" class="mb-6">
+                <label for="exercise-search" class="mb-2 block font-medium">
+                    Search exercises
+                </label>
+
+                <div class="flex flex-col gap-3 sm:flex-row">
+                    <input
+                        id="exercise-search"
+                        name="search"
+                        type="search"
+                        placeholder="Search exercises..."
+                        class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+                    >
+
+                    <button
+                        type="submit"
+                        class="rounded-lg bg-cyan-500 px-5 py-3 font-semibold text-slate-950 hover:bg-cyan-400"
+                    >
+                        Search
+                    </button>
+                </div>
+            </form>
+
+            <!-- Filters -->
+            <section aria-labelledby="filter-heading" class="mb-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+                    <h2 id="filter-heading" class="text-lg font-bold">Filter Exercises</h2>
+
+                    <a href="exercise-library.html" class="text-sm text-cyan-400 hover:text-cyan-300">
+                        Clear filters
+                    </a>
+                </div>
+
+                <form action="exercise-library.html" method="get"
+                      class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+                    <div>
+                        <label for="muscle-group" class="mb-2 block text-sm text-slate-300">
+                            Muscle Group
+                        </label>
+
+                        <select id="muscle-group" name="muscle"
+                                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                            <option value="">All muscle groups</option>
+                            <option value="chest">Chest</option>
+                            <option value="back">Back</option>
+                            <option value="legs">Legs</option>
+                            <option value="shoulders">Shoulders</option>
+                            <option value="arms">Arms</option>
+                            <option value="core">Core</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="equipment" class="mb-2 block text-sm text-slate-300">
+                            Equipment
+                        </label>
+
+                        <select id="equipment" name="equipment"
+                                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                            <option value="">All equipment</option>
+                            <option value="none">No equipment</option>
+                            <option value="dumbbells">Dumbbells</option>
+                            <option value="barbell">Barbell</option>
+                            <option value="machine">Machine</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="difficulty" class="mb-2 block text-sm text-slate-300">
+                            Difficulty
+                        </label>
+
+                        <select id="difficulty" name="difficulty"
+                                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                            <option value="">All levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="exercise-type" class="mb-2 block text-sm text-slate-300">
+                            Exercise Type
+                        </label>
+
+                        <select id="exercise-type" name="type"
+                                class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white focus:border-cyan-500 focus:outline-none">
+                            <option value="">All types</option>
+                            <option value="strength">Strength</option>
+                            <option value="cardio">Cardio</option>
+                            <option value="flexibility">Flexibility</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <button type="submit"
+                                class="rounded-lg bg-cyan-500 px-5 py-3 font-semibold text-slate-950 hover:bg-cyan-400">
+                            Apply Filters
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Exercise Cards -->
+            <section aria-labelledby="exercise-list-heading">
+                <div class="mb-5">
+                    <h2 id="exercise-list-heading" class="text-xl font-bold">All Exercises</h2>
+                    <p class="mt-1 text-sm text-slate-400">
+                        Browse the available exercises and view their instructions.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+
+                    <!-- Push-Up -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Push-up image placeholder">
+                            🏋️
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">CHEST</span>
+                            <h3 class="mt-2 text-lg font-bold">Push-Up</h3>
+                            <p class="mt-1 text-sm text-slate-400">Chest · Bodyweight · Beginner</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Build upper-body strength with a controlled bodyweight movement.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Dumbbell Bench Press -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Dumbbell bench press image placeholder">
+                            💪
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">CHEST</span>
+                            <h3 class="mt-2 text-lg font-bold">Dumbbell Bench Press</h3>
+                            <p class="mt-1 text-sm text-slate-400">Chest · Dumbbells · Intermediate</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Press with a full range of motion to develop your chest.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Squat -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Squat image placeholder">
+                            🦵
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">LEGS</span>
+                            <h3 class="mt-2 text-lg font-bold">Squat</h3>
+                            <p class="mt-1 text-sm text-slate-400">Legs · Bodyweight · Beginner</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                A foundational movement for leg strength and stability.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Deadlift -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Deadlift image placeholder">
+                            🏋️
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">BACK</span>
+                            <h3 class="mt-2 text-lg font-bold">Deadlift</h3>
+                            <p class="mt-1 text-sm text-slate-400">Back · Barbell · Advanced</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Train your posterior chain with a powerful hip-hinge movement.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Plank -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Plank exercise image placeholder">
+                            🧘
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">CORE</span>
+                            <h3 class="mt-2 text-lg font-bold">Plank</h3>
+                            <p class="mt-1 text-sm text-slate-400">Core · Bodyweight · Beginner</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Develop core endurance while maintaining a neutral spine.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Pull-Up -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Pull-up exercise image placeholder">
+                            💪
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">BACK</span>
+                            <h3 class="mt-2 text-lg font-bold">Pull-Up</h3>
+                            <p class="mt-1 text-sm text-slate-400">Back · Bodyweight · Intermediate</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Strengthen your back and arms with a vertical pull.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Dumbbell Shoulder Press -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Shoulder press image placeholder">
+                            🏋️
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">SHOULDERS</span>
+                            <h3 class="mt-2 text-lg font-bold">Dumbbell Shoulder Press</h3>
+                            <p class="mt-1 text-sm text-slate-400">Shoulders · Dumbbells · Intermediate</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Build shoulder strength with a controlled overhead press.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Barbell Row -->
+                    <article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-36 items-center justify-center bg-slate-800 text-4xl" role="img" aria-label="Barbell row image placeholder">
+                            💪
+                        </div>
+
+                        <div class="p-4">
+                            <span class="text-xs font-semibold text-cyan-400">BACK</span>
+                            <h3 class="mt-2 text-lg font-bold">Barbell Row</h3>
+                            <p class="mt-1 text-sm text-slate-400">Back · Barbell · Intermediate</p>
+                            <p class="mt-3 text-sm text-slate-300">
+                                Develop back strength with a controlled horizontal pull.
+                            </p>
+
+                            <a href="exercise-details.html"
+                               class="mt-4 block rounded-lg border border-slate-700 px-4 py-2 text-center text-sm font-semibold hover:border-cyan-500 hover:text-cyan-400">
+                                View Details
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="mt-8 border-t border-slate-800 pt-5 text-center text-sm text-slate-500">
+                FitTrack · Fitness &amp; Workout Planner · Sample exercise data
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
