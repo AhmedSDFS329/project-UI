@@ -1,199 +1,64 @@
+# Fitness & Workout Planner — SW302 UI Development (Phase 2)
 
-# FitTrack - Fitness & Workout Planner
+Fitness & Workout Planner is an interactive web dashboard designed for Zewail City of Science and Technology[cite: 1]. It enables users to discover exercises, create custom workout routines, track active workout sessions, and analyze fitness progress through a modern dark-mode user interface[cite: 1].
 
-## Project Overview
+---
 
-FitTrack is a responsive Fitness & Workout Planner web application designed to help users organize workouts, explore exercises, create personalized routines, and track workout history.
+## Team Members & Task Allocation (3 Members)
 
-This project is developed as part of the SW302 - User Interface Development course at Zewail City of Science, Technology and Innovation.
+| Member | Role | Assigned Pages & Responsibilities |
+| :--- | :--- | :--- |
+| **Ahmed Osama** | Team Leader | • **Dashboard**<br>• **Workout History & Progress**<br>• **Exercise Details**<br>• Final project integration, unified navigation & design consistency review, GitHub repository structure review. |
+| **Zeyad** | Routine Management | • **Routine Builder**<br>• **My Routines**<br>• Matching exercise names with Exercise Library, responsive testing for assigned pages. |
+| **Nour** | Workout Experience & Documentation | • **Exercise Library**<br>• **Active Workout**<br>• Writing root README, run instructions, Phase 2 project report, and coordinating cross-device responsive UI testing. |
 
-The current phase focuses on UI/UX design and a static frontend prototype using HTML and Tailwind CSS.
+---
 
-## Project Objectives
+## The Seven Required Pages (Phase 2 Deliverables)
 
-- Provide a user-friendly fitness dashboard.
-- Allow users to explore exercises and view exercise details.
-- Enable users to create and manage workout routines.
-- Provide an active workout interface.
-- Display workout history and progress statistics.
-- Support desktop and mobile layouts.
+1. **Dashboard (`dashboard.html`):** Welcome heading, 3 summary cards (Total Workouts, Current Streak, Estimated Calories), weekly duration bar chart, muscle-group doughnut chart, and quick-access links[cite: 2, 3].
+2. **Exercise Details (`exercise-details.html`):** Exercise image/media, target muscles, equipment, step-by-step instructions, safety tips, common mistakes, and set/rep adjustment controls[cite: 2, 3].
+3. **Workout History & Progress (`workout-history.html`):** Log of completed sessions (date, workout name, duration, calories burned), date filters, progress chart, and empty states[cite: 2, 3].
+4. **Routine Builder (`routine-builder.html`):** Routine name input, adding/removing/reordering exercises, setting target sets and reps, Save/Cancel buttons, and inline validation[cite: 2, 3].
+5. **My Routines (`my-routines.html`):** Cards for 3+ sample routines, exercise count, estimated duration, description, Edit / Delete / Start Workout triggers, and empty state[cite: 2, 3].
+6. **Exercise Library (`exercise-library.html`):** Search bar, 3 filters (muscle group, equipment, difficulty), 8+ exercise cards, View Details / Quick Add buttons, and empty state[cite: 2, 3].
+7. **Active Workout (`active-workout.html`):** Current exercise counter, set completion controls, interactive rest timer (Start, Pause, Reset), progress indicator, and Finish Workout summary modal[cite: 2, 3].
 
-## Features
+---
 
-### 1. Landing Page
+## Tech Stack
 
-Introduces the application and provides navigation to its main sections.
+- **HTML5**: Semantic document layout and accessibility structure[cite: 1, 5].
+- **Tailwind CSS (via CDN)**: Custom styling implementing the Zewail City brand color system (`#00B0C8` primary teal accent, `#0F172A` dark background)[cite: 1, 4].
+- **Vanilla JavaScript**: Prototype interactivity (rest timer, set completion toggles, mobile drawer navigation).
 
-### 2. Dashboard
+---
 
-Displays fitness statistics, weekly activity, recent workouts, and navigation actions.
-
-### 3. Exercise Library
-
-Provides an exercise collection with search and filtering options.
-
-### 4. Exercise Details
-
-Displays exercise information, targeted muscles, instructions, and workout configuration options.
-
-### 5. Routine Builder
-
-Allows users to create workout routines by selecting exercises and configuring training details.
-
-### 6. My Routines
-
-Displays saved workout routines and provides options to start or delete a routine.
-
-### 7. Active Workout
-
-Allows users to track workout sessions, mark completed exercises, and measure elapsed time.
-
-### 8. Workout History
-
-Displays completed workout sessions, duration statistics, exercise completion information, and activity charts.
-
-## Technology Stack
-
-- HTML5
-- Tailwind CSS v4
-- JavaScript
-- LocalStorage
-- Git and GitHub
-
-## Project Structure
+## Repository Structure
 
 ```text
-project-UI1/
+project-UI/
 ├── docs/
-│   ├── phase2-report.md
-│   └── testing-checklist.md
+│   ├── Phase2_Report.md
+│   ├── Testing_Checklist.md
+│   └── mockups/
 ├── frontend/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── tailwind.input.css
-│   │   │   └── tailwind.generated.css
-│   │   ├── images/
-│   │   └── js/
-│   │       └── app.js
 │   ├── index.html
 │   ├── dashboard.html
-│   ├── exercise-library.html
 │   ├── exercise-details.html
+│   ├── workout-history.html
 │   ├── routine-builder.html
 │   ├── my-routines.html
+│   ├── exercise-library.html
 │   ├── active-workout.html
-│   └── workout-history.html
-├── .gitignore
+│   └── assets/
+│       ├── css/
+│       ├── images/
+│       └── js/
+├── backend/
+│   └── README.md
+├── tests/
+│   └── README.md
+├── deployment/
+│   └── README.md
 └── README.md
-```
-
-## Installation and Setup
-
-### Prerequisites
-
-- Node.js
-- npm
-- Visual Studio Code or another code editor
-- A modern web browser
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/AhmedSDF5329/project-UI.git
-```
-
-### Open the Project Directory
-
-```bash
-cd project-UI
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Build Tailwind CSS
-
-```bash
-npm run build:css
-```
-
-### Watch Tailwind CSS Changes
-
-```bash
-npm run watch:css
-```
-
-### Run the Application
-
-Open `frontend/index.html` in a browser or use the Live Server extension in Visual Studio Code.
-
-Ensure that the paths in `package.json` match the actual project directory structure.
-
-## Data Storage
-
-The prototype uses browser LocalStorage to store workout routines and workout session history.
-
-Data remains in the current browser and is not synchronized between users or devices.
-
-The current version does not require a backend server or database.
-
-## Design and Responsiveness
-
-The interface uses a dark theme with cyan accents, structured cards, and responsive layouts.
-
-The design focuses on:
-
-- Consistent navigation
-- Clear visual hierarchy
-- Responsive layouts
-- Accessible form labels and controls
-- Readable text and consistent spacing
-
-## Testing
-
-The prototype should be tested for:
-
-- Navigation between pages
-- Exercise search and filtering
-- Creating, saving, and deleting routines
-- Starting and completing workout sessions
-- Recording and displaying workout history
-- Responsive behavior on desktop and mobile devices
-- Keyboard navigation and form accessibility
-
-## Current Limitations
-
-- The application is a frontend prototype.
-- There is no backend API or database integration.
-- LocalStorage data is limited to the current browser.
-- Some displayed statistics or exercise content may be demonstration data.
-- Features require browser testing before final submission.
-
-## Future Improvements
-
-- Add user authentication and profiles.
-- Integrate a backend API and database.
-- Synchronize workout data across devices.
-- Add more exercises and personalized recommendations.
-- Improve workout analytics and progress tracking.
-
-## Academic Information
-
-**Course:** SW302 - User Interface Development
-
-**Institution:** Zewail City of Science, Technology and Innovation
-
-**Project:** Fitness & Workout Planner
-
-**Phase:** Phase 2 - UI/UX Design and Static Prototype
-
-## Contributors
-
-Add the names and responsibilities of all project team members.
-
-## License
-
-This project was developed for academic purposes.
