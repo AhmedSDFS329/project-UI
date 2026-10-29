@@ -1,14 +1,12 @@
 {
-  "name": "project-ui",
+  "name": "fittrack-fitness-planner",
   "version": "1.0.0",
-  "description": "Fitness and Workout Planner",
-  "main": "index.js",
+  "private": true,
+  "description": "Fitness and Workout Planner - Phase 2 UI Prototype",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./project-UI1/frontend/assets/css/tailwind.input.css -o ./project-UI1/frontend/assets/css/tailwind.generated.css",
-    "watch:css": "tailwindcss -i ./project-UI1/frontend/assets/css/tailwind.input.css -o ./project-UI1/frontend/assets/css/tailwind.generated.css --watch"
+    "dev:css": "npx @tailwindcss/cli -i ./project-UI1/frontend/assets/css/tailwind.input.css -o ./project-UI1/frontend/assets/css/tailwind.generated.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./project-UI1/frontend/assets/css/tailwind.input.css -o ./project-UI1/frontend/assets/css/tailwind.generated.css --minify"
   },
-  "type": "commonjs",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "tailwindcss": "^4.3.3"
